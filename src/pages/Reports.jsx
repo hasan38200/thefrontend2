@@ -283,7 +283,7 @@ export default function Reports() {
                   Newsletter
                 </p>
                 <h2 className="mt-4 font-display text-3xl font-semibold text-navy md:text-4xl lg:text-5xl">
-                  Get the <span className="font-serif italic text-red">right</span> ideas, monthly.
+                  Get the <span className="font-serif italic text-white">right</span> ideas, monthly.
                 </h2>
                 <p className="mt-4 text-base text-navy/80">
                   New posts, reports and talent insights in your inbox. No spam.

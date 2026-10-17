@@ -230,7 +230,7 @@ export default function Careers() {
                   </div>
 
                   <label className="block">
-                    <span className="text-sm font-semibold text-navy">CV or portfolio link</span>
+                    <span className="text-sm font-semibold text-navy">Portfolio link</span>
                     <input name="portfolio" type="text" placeholder="https://" className="mt-2 w-full rounded-xl border border-navy/20 bg-[#FBEFD6] px-4 py-3 outline-none transition focus:border-red focus:ring-2 focus:ring-red/20" />
                   </label>
 

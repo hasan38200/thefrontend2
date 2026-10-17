@@ -6,8 +6,10 @@ import { NAV, INDUSTRIES, PLACES } from "../../data";
 import MobileMenu from "./MobileMenu";
 
 const WHAT_WE_DO = [
-  { label: "PR", to: "/what-we-do#pr" },
+  { label: "PR", to: "/what-we-do#talent-pr" },
   { label: "Social Media", to: "/what-we-do#social-media" },
+  { label: "Paid media", to: "/what-we-do#paid-media" },
+  { label: "Shoots & production", to: "/what-we-do#shoots-production" },
   { label: "Our Work", to: "/what-we-do#our-work" },
 ];
 
@@ -58,10 +60,8 @@ export default function Nav() {
     }
   };
 
-  // Filter out "What We Do" from NAV since it's rendered separately
   const otherNavItems = NAV.filter((item) => item.label !== "What We Do");
 
-  // Helper to close all other dropdowns
   const closeAllExcept = (current) => {
     if (current !== "whatWeDo") setWhatWeDoOpen(false);
     if (current !== "whoWeAre") setWhoWeAreOpen(false);
@@ -89,6 +89,7 @@ export default function Nav() {
 
           {/* Desktop Nav */}
           <nav className="hidden items-center gap-6 lg:flex">
+            
             {/* What We Do Dropdown */}
             <div
               className="relative"
@@ -112,8 +113,9 @@ export default function Nav() {
                     initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
                     className="absolute left-0 top-full z-50 mt-3 w-[360px] rounded-3xl border border-navy/10 bg-cream p-6 shadow-2xl"
                   >
-                    <div className="mb-4 flex items-baseline justify-between">
-                      <h3 className="font-display text-2xl font-semibold text-navy">What We Do</h3>
+                    <div className="mb-4 flex items-baseline justify-between border-b border-navy/15 pb-4">
+                      {/* Big Heading */}
+                      <h3 className="font-display text-3xl font-semibold text-navy">What We Do</h3>
                       <button onClick={() => goToWhatWeDo(null)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </button>
@@ -123,7 +125,7 @@ export default function Nav() {
                         <button
                           key={item.label}
                           onClick={() => goToWhatWeDo(item.to.split("#")[1])}
-                          className="border-b border-navy/15 py-4 text-left font-display text-2xl font-semibold text-navy transition-colors hover:text-red last:border-b-0"
+                          className="border-b border-navy/15 py-3 text-left font-display text-base font-semibold text-navy transition-colors hover:text-red last:border-b-0"
                         >
                           {item.label}
                         </button>
@@ -157,8 +159,9 @@ export default function Nav() {
                     initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
                     className="absolute left-0 top-full z-50 mt-3 w-[360px] rounded-3xl border border-navy/10 bg-cream p-6 shadow-2xl"
                   >
-                    <div className="mb-4 flex items-baseline justify-between">
-                      <h3 className="font-display text-2xl font-semibold text-navy">Who We Are</h3>
+                    <div className="mb-4 flex items-baseline justify-between border-b border-navy/15 pb-4">
+                      {/* Big Heading */}
+                      <h3 className="font-display text-3xl font-semibold text-navy">Who We Are</h3>
                     </div>
                     <div className="flex flex-col">
                       {WHO_WE_ARE.map((item) => (
@@ -166,7 +169,7 @@ export default function Nav() {
                           key={item.label}
                           to={item.to}
                           onClick={() => setWhoWeAreOpen(false)}
-                          className="border-b border-navy/15 py-4 text-left font-display text-2xl font-semibold text-navy transition-colors hover:text-red last:border-b-0"
+                          className="border-b border-navy/15 py-3 text-left font-display text-base font-semibold text-navy transition-colors hover:text-red last:border-b-0"
                         >
                           {item.label}
                         </Link>
@@ -213,8 +216,9 @@ export default function Nav() {
                     initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
                     className="absolute right-0 top-full z-50 mt-3 w-[820px] max-w-[95vw] rounded-3xl border border-navy/10 bg-cream p-8 shadow-2xl"
                   >
-                    <div className="mb-6 flex items-baseline justify-between">
-                      <h3 className="font-display text-2xl font-semibold text-navy">Industries</h3>
+                    <div className="mb-6 flex items-baseline justify-between border-b border-navy/15 pb-4">
+                      {/* Big Heading */}
+                      <h3 className="font-display text-3xl font-semibold text-navy">Industries</h3>
                       <Link to="/industries" onClick={() => setIndustriesOpen(false)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </Link>
@@ -225,7 +229,7 @@ export default function Nav() {
                           key={industry.name}
                           to={`/influencers?industry=${encodeURIComponent(industry.name)}`}
                           onClick={() => setIndustriesOpen(false)}
-                          className="border-b border-navy/15 py-3 text-sm text-navy transition-colors hover:border-red hover:text-red"
+                          className="border-b border-navy/15 py-2.5 text-sm text-navy transition-colors hover:border-red hover:text-red"
                         >
                           {industry.name}
                         </Link>
@@ -259,8 +263,9 @@ export default function Nav() {
                     initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
                     className="absolute right-0 top-full z-50 mt-3 w-[820px] max-w-[95vw] rounded-3xl border border-navy/10 bg-cream p-8 shadow-2xl"
                   >
-                    <div className="mb-6 flex items-baseline justify-between">
-                      <h3 className="font-display text-2xl font-semibold text-navy">Places</h3>
+                    <div className="mb-6 flex items-baseline justify-between border-b border-navy/15 pb-4">
+                      {/* Big Heading */}
+                      <h3 className="font-display text-3xl font-semibold text-navy">Places</h3>
                       <Link to="/places" onClick={() => setPlacesOpen(false)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </Link>
@@ -268,7 +273,7 @@ export default function Nav() {
                     <div className="grid grid-cols-3 gap-6">
                       {PLACES.map((place) => (
                         <div key={place.country}>
-                          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-red">
+                          <p className="mb-3 text-sm font-bold uppercase tracking-widest text-red">
                             {place.country}
                           </p>
                           <div className="flex flex-col gap-1">
@@ -277,7 +282,7 @@ export default function Nav() {
                                 key={city}
                                 to={`/city?city=${encodeURIComponent(city)}`}
                                 onClick={() => setPlacesOpen(false)}
-                                className="border-b border-navy/15 py-2 text-sm text-navy transition-colors hover:border-red hover:text-red"
+                                className="border-b border-navy/15 py-2 text-sm font-medium text-navy transition-colors hover:border-red hover:text-red"
                               >
                                 {city}
                               </Link>
@@ -291,7 +296,7 @@ export default function Nav() {
               </AnimatePresence>
             </div>
 
-            {/* Latest Dropdown (NEW) */}
+            {/* Latest Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => { setLatestOpen(true); closeAllExcept("latest"); }}
@@ -314,8 +319,9 @@ export default function Nav() {
                     initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
                     className="absolute right-0 top-full z-50 mt-3 w-[360px] rounded-3xl border border-navy/10 bg-cream p-6 shadow-2xl"
                   >
-                    <div className="mb-4 flex items-baseline justify-between">
-                      <h3 className="font-display text-2xl font-semibold text-navy">Latest</h3>
+                    <div className="mb-4 flex items-baseline justify-between border-b border-navy/15 pb-4">
+                      {/* Big Heading */}
+                      <h3 className="font-display text-3xl font-semibold text-navy">Latest</h3>
                     </div>
                     <div className="flex flex-col">
                       {LATEST.map((item) => (
@@ -323,7 +329,7 @@ export default function Nav() {
                           key={item.label}
                           to={item.to}
                           onClick={() => setLatestOpen(false)}
-                          className="border-b border-navy/15 py-4 text-left font-display text-2xl font-semibold text-navy transition-colors hover:text-red last:border-b-0"
+                          className="border-b border-navy/15 py-3 text-left font-display text-base font-semibold text-navy transition-colors hover:text-red last:border-b-0"
                         >
                           {item.label}
                         </Link>
@@ -355,7 +361,6 @@ export default function Nav() {
         </div>
       </header>
 
-      {/* Real MobileMenu — portal based, with animations */}
       <MobileMenu open={open} setOpen={setOpen} go={go} />
     </>
   );

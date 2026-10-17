@@ -428,7 +428,7 @@ export default function WhatWeDo() {
         </div>
 
         {/* OUR WORK AT A GLANCE */}
-        <div className="mt-28">
+        <div id="our-work"className="mt-28">
           <div className="grid grid-cols-1 items-end gap-6 md:grid-cols-2 md:gap-12">
             <h2 className="font-display text-3xl font-semibold text-navy md:text-4xl lg:text-5xl">
               Our work, at a glance.
@@ -438,7 +438,7 @@ export default function WhatWeDo() {
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-3 md:grid-rows-2 md:gap-4">
+          <div  className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-3 md:grid-rows-2 md:gap-4">
             <Reveal className="md:col-span-1 md:row-span-2">
               <motion.div
                 whileHover={{ scale: 1.01 }}
