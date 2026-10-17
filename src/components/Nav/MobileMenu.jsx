@@ -141,6 +141,9 @@ export default function MobileMenu({ open, setOpen, go }) {
 
         <Row i={NAV.length + 1} chevron onClick={() => push("industries")}>Industries</Row>
         <Row i={NAV.length + 2} chevron onClick={() => push("places")}>Places</Row>
+        
+        {/* Latest (NEW) */}
+        <Row i={NAV.length + 3} chevron onClick={() => push("latest")}>Latest</Row>
       </List>
     );
   } else if (view === "who-we-are") {
@@ -152,6 +155,18 @@ export default function MobileMenu({ open, setOpen, go }) {
         </Row>
         <Row i={1} size="md" to="/careers" onClick={close}>
           Our Careers
+        </Row>
+      </List>
+    );
+  } else if (view === "latest") {
+    title = "Latest";
+    list = (
+      <List>
+        <Row i={0} size="md" to="/blog" onClick={close}>
+          Our Blog
+        </Row>
+        <Row i={1} size="md" to="/reports" onClick={close}>
+          Our Reports
         </Row>
       </List>
     );

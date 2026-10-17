@@ -106,10 +106,7 @@ export default function Careers() {
           <div className="relative aspect-[4/3] w-full">
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.2, ease }} className="absolute left-0 top-0 h-[80%] w-[55%] overflow-hidden rounded-tr-[3rem] bg-navy">
               <video src="https://videos.pexels.com/video-files/3254006/3254006-hd_1920_1080_25fps.mp4" poster="https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=800" autoPlay loop muted playsInline className="h-full w-full object-cover opacity-80" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                <PlayIcon />
-                <p className="text-xs text-white/80">[Video: day in the life]</p>
-              </div>
+            
             </motion.div>
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4, ease }} className="absolute right-0 top-0 h-[45%] w-[40%] overflow-hidden rounded-bl-[3rem] bg-red">
               <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team" className="h-full w-full object-cover" />

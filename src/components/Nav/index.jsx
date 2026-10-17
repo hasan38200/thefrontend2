@@ -16,6 +16,11 @@ const WHO_WE_ARE = [
   { label: "Our Careers", to: "/careers" },
 ];
 
+const LATEST = [
+  { label: "Our Blog", to: "/blog" },
+  { label: "Our Reports", to: "/reports" },
+];
+
 export default function Nav() {
   const { pathname } = useLocation();
   const nav = useNavigate();
@@ -24,6 +29,7 @@ export default function Nav() {
   const [whoWeAreOpen, setWhoWeAreOpen] = useState(false);
   const [industriesOpen, setIndustriesOpen] = useState(false);
   const [placesOpen, setPlacesOpen] = useState(false);
+  const [latestOpen, setLatestOpen] = useState(false);
 
   const { scrollYProgress } = useScroll();
   const prog = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
@@ -55,6 +61,15 @@ export default function Nav() {
   // Filter out "What We Do" from NAV since it's rendered separately
   const otherNavItems = NAV.filter((item) => item.label !== "What We Do");
 
+  // Helper to close all other dropdowns
+  const closeAllExcept = (current) => {
+    if (current !== "whatWeDo") setWhatWeDoOpen(false);
+    if (current !== "whoWeAre") setWhoWeAreOpen(false);
+    if (current !== "industries") setIndustriesOpen(false);
+    if (current !== "places") setPlacesOpen(false);
+    if (current !== "latest") setLatestOpen(false);
+  };
+
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 border-b border-navy/10 bg-cream/90 backdrop-blur">
@@ -73,16 +88,11 @@ export default function Nav() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-6 lg:flex">
             {/* What We Do Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => {
-                setWhatWeDoOpen(true);
-                setWhoWeAreOpen(false);
-                setIndustriesOpen(false);
-                setPlacesOpen(false);
-              }}
+              onMouseEnter={() => { setWhatWeDoOpen(true); closeAllExcept("whatWeDo"); }}
               onMouseLeave={() => setWhatWeDoOpen(false)}
             >
               <button
@@ -91,11 +101,7 @@ export default function Nav() {
                 }`}
               >
                 What We Do
-                <motion.span
-                  animate={{ rotate: whatWeDoOpen ? 180 : 0 }}
-                  transition={{ duration: 0.25, ease: "easeInOut" }}
-                  className="text-[11px]"
-                >
+                <motion.span animate={{ rotate: whatWeDoOpen ? 180 : 0 }} transition={{ duration: 0.25, ease: "easeInOut" }} className="text-[11px]">
                   ▾
                 </motion.span>
               </button>
@@ -103,18 +109,12 @@ export default function Nav() {
               <AnimatePresence>
                 {whatWeDoOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
                     className="absolute left-0 top-full z-50 mt-3 w-[360px] rounded-3xl border border-navy/10 bg-cream p-6 shadow-2xl"
                   >
                     <div className="mb-4 flex items-baseline justify-between">
                       <h3 className="font-display text-2xl font-semibold text-navy">What We Do</h3>
-                      <button
-                        onClick={() => goToWhatWeDo(null)}
-                        className="text-xs font-semibold uppercase tracking-widest text-red hover:underline"
-                      >
+                      <button onClick={() => goToWhatWeDo(null)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </button>
                     </div>
@@ -137,12 +137,7 @@ export default function Nav() {
             {/* Who We Are Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => {
-                setWhoWeAreOpen(true);
-                setWhatWeDoOpen(false);
-                setIndustriesOpen(false);
-                setPlacesOpen(false);
-              }}
+              onMouseEnter={() => { setWhoWeAreOpen(true); closeAllExcept("whoWeAre"); }}
               onMouseLeave={() => setWhoWeAreOpen(false)}
             >
               <button
@@ -151,11 +146,7 @@ export default function Nav() {
                 }`}
               >
                 Who We Are
-                <motion.span
-                  animate={{ rotate: whoWeAreOpen ? 180 : 0 }}
-                  transition={{ duration: 0.25, ease: "easeInOut" }}
-                  className="text-[11px]"
-                >
+                <motion.span animate={{ rotate: whoWeAreOpen ? 180 : 0 }} transition={{ duration: 0.25, ease: "easeInOut" }} className="text-[11px]">
                   ▾
                 </motion.span>
               </button>
@@ -163,10 +154,7 @@ export default function Nav() {
               <AnimatePresence>
                 {whoWeAreOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
                     className="absolute left-0 top-full z-50 mt-3 w-[360px] rounded-3xl border border-navy/10 bg-cream p-6 shadow-2xl"
                   >
                     <div className="mb-4 flex items-baseline justify-between">
@@ -192,19 +180,11 @@ export default function Nav() {
             {/* Other NAV items */}
             {otherNavItems.map((item) =>
               item.children ? (
-                <button
-                  key={item.label}
-                  onClick={() => item.children[0] && go(item.children[0].to)}
-                  className="text-[15px] font-semibold text-navy transition-colors hover:text-red"
-                >
+                <button key={item.label} onClick={() => item.children[0] && go(item.children[0].to)} className="text-[15px] font-semibold text-navy transition-colors hover:text-red">
                   {item.label}
                 </button>
               ) : (
-                <button
-                  key={item.label}
-                  onClick={() => go(item.to)}
-                  className="text-[15px] font-semibold text-navy transition-colors hover:text-red"
-                >
+                <button key={item.label} onClick={() => go(item.to)} className="text-[15px] font-semibold text-navy transition-colors hover:text-red">
                   {item.label}
                 </button>
               )
@@ -213,12 +193,7 @@ export default function Nav() {
             {/* Industries Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => {
-                setIndustriesOpen(true);
-                setWhatWeDoOpen(false);
-                setWhoWeAreOpen(false);
-                setPlacesOpen(false);
-              }}
+              onMouseEnter={() => { setIndustriesOpen(true); closeAllExcept("industries"); }}
               onMouseLeave={() => setIndustriesOpen(false)}
             >
               <button
@@ -227,11 +202,7 @@ export default function Nav() {
                 }`}
               >
                 Industries
-                <motion.span
-                  animate={{ rotate: industriesOpen ? 180 : 0 }}
-                  transition={{ duration: 0.25, ease: "easeInOut" }}
-                  className="text-[11px]"
-                >
+                <motion.span animate={{ rotate: industriesOpen ? 180 : 0 }} transition={{ duration: 0.25, ease: "easeInOut" }} className="text-[11px]">
                   ▾
                 </motion.span>
               </button>
@@ -239,19 +210,12 @@ export default function Nav() {
               <AnimatePresence>
                 {industriesOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
                     className="absolute right-0 top-full z-50 mt-3 w-[820px] max-w-[95vw] rounded-3xl border border-navy/10 bg-cream p-8 shadow-2xl"
                   >
                     <div className="mb-6 flex items-baseline justify-between">
                       <h3 className="font-display text-2xl font-semibold text-navy">Industries</h3>
-                      <Link
-                        to="/industries"
-                        onClick={() => setIndustriesOpen(false)}
-                        className="text-xs font-semibold uppercase tracking-widest text-red hover:underline"
-                      >
+                      <Link to="/industries" onClick={() => setIndustriesOpen(false)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </Link>
                     </div>
@@ -275,12 +239,7 @@ export default function Nav() {
             {/* Places Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => {
-                setPlacesOpen(true);
-                setWhatWeDoOpen(false);
-                setWhoWeAreOpen(false);
-                setIndustriesOpen(false);
-              }}
+              onMouseEnter={() => { setPlacesOpen(true); closeAllExcept("places"); }}
               onMouseLeave={() => setPlacesOpen(false)}
             >
               <button
@@ -289,11 +248,7 @@ export default function Nav() {
                 }`}
               >
                 Places
-                <motion.span
-                  animate={{ rotate: placesOpen ? 180 : 0 }}
-                  transition={{ duration: 0.25, ease: "easeInOut" }}
-                  className="text-[11px]"
-                >
+                <motion.span animate={{ rotate: placesOpen ? 180 : 0 }} transition={{ duration: 0.25, ease: "easeInOut" }} className="text-[11px]">
                   ▾
                 </motion.span>
               </button>
@@ -301,19 +256,12 @@ export default function Nav() {
               <AnimatePresence>
                 {placesOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
                     className="absolute right-0 top-full z-50 mt-3 w-[820px] max-w-[95vw] rounded-3xl border border-navy/10 bg-cream p-8 shadow-2xl"
                   >
                     <div className="mb-6 flex items-baseline justify-between">
                       <h3 className="font-display text-2xl font-semibold text-navy">Places</h3>
-                      <Link
-                        to="/places"
-                        onClick={() => setPlacesOpen(false)}
-                        className="text-xs font-semibold uppercase tracking-widest text-red hover:underline"
-                      >
+                      <Link to="/places" onClick={() => setPlacesOpen(false)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </Link>
                     </div>
@@ -336,6 +284,49 @@ export default function Nav() {
                             ))}
                           </div>
                         </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Latest Dropdown (NEW) */}
+            <div
+              className="relative"
+              onMouseEnter={() => { setLatestOpen(true); closeAllExcept("latest"); }}
+              onMouseLeave={() => setLatestOpen(false)}
+            >
+              <button
+                className={`flex items-center gap-1 text-[15px] font-semibold transition-colors ${
+                  latestOpen ? "text-navy/40" : "text-navy hover:text-red"
+                }`}
+              >
+                Latest
+                <motion.span animate={{ rotate: latestOpen ? 180 : 0 }} transition={{ duration: 0.25, ease: "easeInOut" }} className="text-[11px]">
+                  ▾
+                </motion.span>
+              </button>
+
+              <AnimatePresence>
+                {latestOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="absolute right-0 top-full z-50 mt-3 w-[360px] rounded-3xl border border-navy/10 bg-cream p-6 shadow-2xl"
+                  >
+                    <div className="mb-4 flex items-baseline justify-between">
+                      <h3 className="font-display text-2xl font-semibold text-navy">Latest</h3>
+                    </div>
+                    <div className="flex flex-col">
+                      {LATEST.map((item) => (
+                        <Link
+                          key={item.label}
+                          to={item.to}
+                          onClick={() => setLatestOpen(false)}
+                          className="border-b border-navy/15 py-4 text-left font-display text-2xl font-semibold text-navy transition-colors hover:text-red last:border-b-0"
+                        >
+                          {item.label}
+                        </Link>
                       ))}
                     </div>
                   </motion.div>
