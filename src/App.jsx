@@ -8,9 +8,11 @@ import Industries from "./pages/Industries";
 import IndustryDetail from "./pages/IndustryDetail";
 import Places from "./pages/Places";
 import CityDetail from "./pages/CityDetail";
-import WhatWeDo from "./pages/WhatWeDo";   // ← NEW
+import WhatWeDo from "./pages/WhatWeDo";   
 import AboutUs from "./pages/AboutUs";
 import Careers from "./pages/Careers";
+import Blog from "./pages/Blog"; // <-- NEW
+import Reports from "./pages/Reports";
 
 export default function App() {
   useLenis();
@@ -20,17 +22,20 @@ export default function App() {
   const moved = useRef(false);
   if (loc.pathname !== first.current) moved.current = true;
 
- const page = useRoutes([
-  { path: "/", element: <Home ready={ready} /> },
-  { path: "/brief", element: <Brief /> },
-  { path: "/industries", element: <Industries /> },
-  { path: "/influencers", element: <IndustryDetail /> },
-  { path: "/places", element: <Places /> },
-  { path: "/city", element: <CityDetail /> },
-  { path: "/what-we-do", element: <WhatWeDo /> },
-  { path: "/about-us", element: <AboutUs /> },
-{ path: "/careers", element: <Careers /> },
-]);
+  const page = useRoutes([
+    { path: "/", element: <Home ready={ready} /> },
+    { path: "/brief", element: <Brief /> },
+    { path: "/industries", element: <Industries /> },
+    { path: "/influencers", element: <IndustryDetail /> },
+    { path: "/places", element: <Places /> },
+    { path: "/city", element: <CityDetail /> },
+    { path: "/what-we-do", element: <WhatWeDo /> },
+    { path: "/about-us", element: <AboutUs /> },
+    { path: "/careers", element: <Careers /> },
+    { path: "/blog", element: <Blog /> },  // <-- NEW
+    { path: "/reports", element: <Reports /> }
+  ]);
+
   return (
     <div className="min-h-screen bg-cream">
       <Cursor />
