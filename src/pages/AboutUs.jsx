@@ -228,14 +228,17 @@ export default function AboutUs() {
             </div>
           </Reveal>
 
-          <div className="flex flex-wrap gap-3 md:justify-end">
-            {["Talent & PR", "Social media", "Paid media", "Shoots & production", "Creative direction", "Talent booking"].map((item, i) => (
-              <Reveal key={item} delay={i * 0.05}>
-                <div className="rounded-full border border-navy/30 px-6 py-3 text-sm font-semibold text-navy transition-colors duration-300 hover:border-navy hover:bg-navy hover:text-cream md:text-base cursor-default">
-                  {item}
-                </div>
-              </Reveal>
-            ))}
+          {/* Pills Grid — FORCED into 3 columns everywhere to ensure 2 lines */}
+          <div className="mt-8 flex justify-start lg:justify-end lg:mt-0">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 max-w-[500px]">
+              {["Talent & PR", "Social media", "Paid media", "Shoots & production", "Creative direction", "Talent booking"].map((item, i) => (
+                <Reveal key={item} delay={i * 0.05} className="w-full">
+                  <div className="flex w-full items-center justify-center whitespace-nowrap rounded-full border border-navy/30 px-2 py-2 text-[10px] sm:px-4 sm:py-2.5 sm:text-xs md:px-6 md:py-3 md:text-sm font-semibold text-navy transition-colors duration-300 hover:border-navy hover:bg-navy hover:text-cream cursor-default">
+                    {item}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
 

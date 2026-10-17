@@ -4,11 +4,11 @@ import { Reveal, Sec, ease } from "../ui";
 
 // ---------- Data ----------
 const ROLES = [
-  { title: "Talent Researcher", dept: "Talent & PR", type: "Full-time", location: "Karachi / Remote", desc: "Research creators, assess niche and audience fit, and build ranked shortlists with clear rationale." },
-  { title: "PR & Partnerships Executive", dept: "Talent & PR", type: "Full-time", location: "Lahore", desc: "Run media outreach, PR seeding and brand partnerships, and keep launch timelines on track." },
-  { title: "Social Media Executive", dept: "Social media", type: "Full-time", location: "Karachi", desc: "Plan content calendars, write captions in English and Urdu, and manage brand communities." },
+  { title: "Talent Researcher", dept: "Talent & PR", type: "Full-time", location: "Remote", desc: "Research creators, assess niche and audience fit, and build ranked shortlists with clear rationale." },
+  { title: "PR & Partnerships Executive", dept: "Talent & PR", type: "Full-time", location: "Remote", desc: "Run media outreach, PR seeding and brand partnerships, and keep launch timelines on track." },
+  { title: "Social Media Executive", dept: "Social media", type: "Full-time", location: "Remote", desc: "Plan content calendars, write captions in English and Urdu, and manage brand communities." },
   { title: "Paid Media Specialist", dept: "Paid media", type: "Full-time", location: "Remote", desc: "Plan, launch and optimise Meta, TikTok and Google campaigns, and report results clearly." },
-  { title: "Video Editor & Content Creator", dept: "Shoots & production", type: "Full-time / Freelance", location: "Karachi", desc: "Edit reels, UGC-style video and brand films, and support shoots from concept to delivery." },
+  { title: "Video Editor & Content Creator", dept: "Shoots & production", type: "Full-time / Freelance", location: "Remote", desc: "Edit reels, UGC-style video and brand films, and support shoots from concept to delivery." },
 ];
 
 const HIRING_STEPS = [
