@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    background: #FBEFD6;
+}
+
+/* Force Bricolage Grotesque on EVERY element */
+*,
+*::before,
+*::after,
+html,
+body,
+button,
+input,
+select,
+textarea {
+    font-family: "Bricolage Grotesque", sans-serif !important;
+}
+
+body {
+    @apply bg-cream text-navy antialiased;
+}
+
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+::selection {
+    background: #BE1D23;
+    color: #FBEFD6;
+}
+
+:focus-visible {
+    outline: 2px solid #BE1D23;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #BE1D23 #FBEFD6;
+}
+
+.no-scrollbar {
+    scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* ---------- Heading sizes ---------- */
+h1.font-display {
+    font-size: clamp(2rem, 4.2vw, 3.75rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+h2.font-display {
+    font-size: clamp(1.75rem, 3.4vw, 3rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+}
+
+h3.font-display {
+    font-size: clamp(1.25rem, 1.8vw, 1.75rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+h4.font-display {
+    font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}

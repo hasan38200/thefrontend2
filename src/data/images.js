@@ -1,0 +1,7 @@
+// All images are online Unsplash links. Swap any id/URL here and the whole site updates.
+export const u=(id,w=900)=>Array.isArray(id)?id.map(i=>u(i,w)):`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
+export const IMG={
+ hero:["photo-1494790108377-be9c29b29330","photo-1500648767791-00dcc994a43e","photo-1438761681033-6461ffad8d80","photo-1507003211169-0a1dd7228f2d","photo-1529626455594-4ff0802cfb7e","photo-1573496359142-b8d87734a5a2","photo-1488426862026-3ee34a7d66df","photo-1506794778202-cad84cf45f1d","photo-1524504388940-b1c1722653e1","photo-1469334031218-e382a71b716b","photo-1534528741775-53994a69daeb","photo-1531746020798-e6953c6e8e04"],
+ why:["photo-1522202176988-66273c2fd55f","photo-1500648767791-00dcc994a43e"],method:"photo-1556761175-5973dc0f32e7",join:["photo-1524504388940-b1c1722653e1","photo-1500648767791-00dcc994a43e","photo-1529626455594-4ff0802cfb7e"],final:["photo-1542744173-8e7e53415bb0","photo-1534528741775-53994a69daeb","photo-1506794778202-cad84cf45f1d"],
+ talent:["photo-1556228720-195a672e8a03","photo-1529626455594-4ff0802cfb7e","photo-1469334031218-e382a71b716b","photo-1485846234645-a62644f84728"],
+ clients:["photo-1522335789203-aabd1fc54bc9","photo-1441986300917-64674bd600d8","photo-1556742049-0cfed4f6a45d","photo-1556761175-5973dc0f32e7","photo-1414235077428-338989a2e8c0","photo-1521791136064-7986c2920216"]};

@@ -1,0 +1,1 @@
+export const Sec=({id,bg="bg-cream",children})=><section id={id} className={`${bg} px-5 py-10 md:px-10 md:py-14 ${bg==="bg-navy"?"text-cream":"text-navy"}`}><div className="mx-auto max-w-6xl">{children}</div></section>;

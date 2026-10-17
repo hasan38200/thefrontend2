@@ -1,0 +1,4 @@
+import {useEffect,useState} from "react";import {motion,useMotionValue,useSpring} from "framer-motion";
+export default function Cursor(){const x=useMotionValue(-100),y=useMotionValue(-100),sx=useSpring(x,{stiffness:500,damping:35}),sy=useSpring(y,{stiffness:500,damping:35}),[big,setBig]=useState(false);
+ useEffect(()=>{if(matchMedia("(pointer:coarse)").matches)return;const m=e=>{x.set(e.clientX);y.set(e.clientY);setBig(!!e.target.closest?.("a,button,label,select,input,textarea"))};addEventListener("mousemove",m);return()=>removeEventListener("mousemove",m)},[]);
+ return <motion.div aria-hidden className="pointer-events-none fixed left-0 top-0 z-[95] -ml-[18px] -mt-[18px] hidden h-9 w-9 rounded-full border-2 border-red md:block" style={{x:sx,y:sy}} animate={{scale:big?1.8:1,backgroundColor:big?"rgba(190,29,35,.25)":"rgba(190,29,35,0)"}}/>}

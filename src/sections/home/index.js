@@ -1,0 +1,15 @@
+export {default as Hero} from "./Hero";
+export {default as Marquee} from "./Marquee";
+export {default as Why} from "./Why";
+export {default as Statement} from "./Statement";
+export {default as Method} from "./Method";
+export {default as Scorecard} from "./Scorecard";
+export {default as Services} from "./Services";
+export {default as HowWeWork} from "./HowWeWork";
+export {default as Stats} from "./Stats";
+export {default as Difference} from "./Difference";
+export {default as Talent} from "./Talent";
+export {default as Testimonials} from "./Testimonials";
+export {default as WhoWeWork} from "./WhoWeWork";
+export {default as JoinTalent} from "./JoinTalent";
+export {default as FinalCta} from "./FinalCta";
