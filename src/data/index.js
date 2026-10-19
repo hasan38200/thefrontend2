@@ -3,14 +3,14 @@
 // or a page path (e.g. "/brief").
 export const NAV = [
   {
-    label: "What We Do",
+    label: "Expertise",
     children: [
       { name: "PR", to: "/what-we-do#pr" },
       { name: "Social Media", to: "/what-we-do#social-media" },
       { name: "Our Work", to: "/what-we-do#our-work" },
     ],
   },
-  { label: "workflow", to: "how" },
+  { label: "How we work", to: "how" },
 ];
 
 export const CATS=["UGC creators","Influencers","Models","Actors & presenters","Photographers & videographers"];

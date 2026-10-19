@@ -6,7 +6,6 @@ import { NAV, INDUSTRIES, PLACES } from "../../data";
 
 const ease = [0.22, 1, 0.36, 1];
 
-// every size scales with the screen height, so the menu always fits
 const SIZE = {
   lg: "text-[clamp(1.6rem,5.4vh,2.9rem)]",
   md: "text-[clamp(1.4rem,4.6vh,2.4rem)]",
@@ -29,7 +28,6 @@ const Chevron = ({ dir = "right" }) => (
   </svg>
 );
 
-// panels slide in from the right, and back out to the right on "Back"
 const panel = {
   enter: (d) => ({ x: d > 0 ? "100%" : "-30%", opacity: d > 0 ? 1 : 0 }),
   center: { x: 0, opacity: 1 },
@@ -86,7 +84,6 @@ export default function MobileMenu({ open, setOpen, go }) {
   };
   const goAndClose = (target) => { unlock(); go(target); };
 
-  // lock page scroll while open
   useEffect(() => {
     if (open) {
       setStack(["main"]);
@@ -98,7 +95,6 @@ export default function MobileMenu({ open, setOpen, go }) {
     return unlock;
   }, [open]);
 
-  // Esc closes; close if the window grows to desktop size
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && setOpen(false);
     const mq = window.matchMedia("(min-width: 1024px)");
@@ -111,63 +107,69 @@ export default function MobileMenu({ open, setOpen, go }) {
     };
   }, [setOpen]);
 
+  // Filter out "Expertise" from NAV since we render it manually below
+  const otherNavItems = NAV.filter((item) => item.label !== "Expertise" && item.label !== "What We Do");
+
   let title = null;
   let list;
 
   if (view === "main") {
     list = (
       <List center>
-        {NAV.map((item, i) =>
+        {/* Right location */}
+        <Row i={0} chevron onClick={() => push("places")}>Right location</Row>
+        
+        {/* Right industries */}
+        <Row i={1} chevron onClick={() => push("industries")}>Right industries</Row>
+
+        {/* Expertise */}
+        <Row i={2} chevron onClick={() => push("what-we-do")}>Expertise</Row>
+
+        {/* Agency */}
+        <Row i={3} chevron onClick={() => push("who-we-are")}>Agency</Row>
+
+        {/* Workflow (from NAV data) */}
+        {otherNavItems.map((item, i) =>
           item.children ? (
-            <Row
-              key={item.label}
-              i={i}
-              chevron
-              onClick={() => push("nav:" + item.label)}
-            >
-              {item.label}
+            <Row key={item.label} i={i + 4} chevron onClick={() => push("nav:" + item.label)}>
+              Workflow
             </Row>
           ) : (
-            <Row key={item.label} i={i} onClick={() => goAndClose(item.to)}>
-              {item.label}
+            <Row key={item.label} i={i + 4} onClick={() => goAndClose(item.to)}>
+              Workflow
             </Row>
           )
         )}
-        
-        {/* Who We Are */}
-        <Row i={NAV.length} chevron onClick={() => push("who-we-are")}>
-          Who We Are
-        </Row>
 
-        <Row i={NAV.length + 1} chevron onClick={() => push("industries")}>Industries</Row>
-        <Row i={NAV.length + 2} chevron onClick={() => push("places")}>Places</Row>
-        
-        {/* Latest (NEW) */}
-        <Row i={NAV.length + 3} chevron onClick={() => push("latest")}>Latest</Row>
+        {/* Latest */}
+        <Row i={NAV.length + 4} chevron onClick={() => push("latest")}>Latest</Row>
+      </List>
+    );
+  } else if (view === "what-we-do") {
+    title = "Expertise";
+    list = (
+      <List>
+        <Row i={0} size="md" to="/what-we-do#talent-pr" onClick={close}>PR</Row>
+        <Row i={1} size="md" to="/what-we-do#social-media" onClick={close}>Social Media</Row>
+        <Row i={2} size="md" to="/what-we-do#paid-media" onClick={close}>Paid media</Row>
+        <Row i={3} size="md" to="/what-we-do#shoots-production" onClick={close}>Shoots & production</Row>
+        <Row i={4} size="md" to="/what-we-do#our-work" onClick={close}>Our Work</Row>
       </List>
     );
   } else if (view === "who-we-are") {
-    title = "Who We Are";
+    title = "Agency";
     list = (
       <List>
-        <Row i={0} size="md" to="/about-us" onClick={close}>
-          About us
-        </Row>
-        <Row i={1} size="md" to="/careers" onClick={close}>
-          Our Careers
-        </Row>
+        <Row i={0} size="md" to="/about-us" onClick={close}>About us</Row>
+        <Row i={1} size="md" to="/careers" onClick={close}>Our Careers</Row>
       </List>
     );
   } else if (view === "latest") {
     title = "Latest";
     list = (
       <List>
-        <Row i={0} size="md" to="/blog" onClick={close}>
-          Our Blog
-        </Row>
-        <Row i={1} size="md" to="/reports" onClick={close}>
-          Our Reports
-        </Row>
+        <Row i={0} size="md" to="/blog" onClick={close}>Blog</Row>
+        <Row i={1} size="md" to="/reports" onClick={close}>Reports</Row>
       </List>
     );
   } else if (view.startsWith("nav:")) {
@@ -177,30 +179,20 @@ export default function MobileMenu({ open, setOpen, go }) {
       <List>
         {(item?.children || []).map((c, i) =>
           c.to.startsWith("/") ? (
-            <Row key={c.name} i={i} size="md" to={c.to} onClick={close}>
-              {c.name}
-            </Row>
+            <Row key={c.name} i={i} size="md" to={c.to} onClick={close}>{c.name}</Row>
           ) : (
-            <Row key={c.name} i={i} size="md" onClick={() => goAndClose(c.to)}>
-              {c.name}
-            </Row>
+            <Row key={c.name} i={i} size="md" onClick={() => goAndClose(c.to)}>{c.name}</Row>
           )
         )}
       </List>
     );
   } else if (view === "industries") {
-    title = "Industries";
+    title = "Right industries";
     const many = INDUSTRIES.length > 7;
     list = (
       <List many={many}>
         {INDUSTRIES.map((x, i) => (
-          <Row
-            key={x.name}
-            i={i}
-            size={many ? "xs" : "md"}
-            to={`/influencers?industry=${encodeURIComponent(x.name)}`}
-            onClick={close}
-          >
+          <Row key={x.name} i={i} size={many ? "xs" : "md"} to={`/influencers?industry=${encodeURIComponent(x.name)}`} onClick={close}>
             {x.name}
           </Row>
         ))}
@@ -210,7 +202,7 @@ export default function MobileMenu({ open, setOpen, go }) {
       </List>
     );
   } else if (view === "places") {
-    title = "Places";
+    title = "Right location";
     list = (
       <List>
         {PLACES.map((p, i) => (
@@ -231,13 +223,7 @@ export default function MobileMenu({ open, setOpen, go }) {
     list = (
       <List many={many}>
         {cities.map((c, i) => (
-          <Row
-            key={c}
-            i={i}
-            size={many ? "xs" : "md"}
-            to={`/city?city=${encodeURIComponent(c)}`}
-            onClick={close}
-          >
+          <Row key={c} i={i} size={many ? "xs" : "md"} to={`/city?city=${encodeURIComponent(c)}`} onClick={close}>
             {c}
           </Row>
         ))}
