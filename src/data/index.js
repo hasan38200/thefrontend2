@@ -10,7 +10,7 @@ export const NAV = [
       { name: "Our Work", to: "/what-we-do#our-work" },
     ],
   },
-  { label: "How we work", to: "how" },
+  { label: "workflow", to: "how" },
 ];
 
 export const CATS=["UGC creators","Influencers","Models","Actors & presenters","Photographers & videographers"];

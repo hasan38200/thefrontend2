@@ -19,8 +19,8 @@ const WHO_WE_ARE = [
 ];
 
 const LATEST = [
-  { label: "Our Blog", to: "/blog" },
-  { label: "Our Reports", to: "/reports" },
+  { label: " Blog", to: "/blog" },
+  { label: " Reports", to: "/reports" },
 ];
 
 export default function Nav() {
@@ -101,7 +101,7 @@ export default function Nav() {
                   whatWeDoOpen ? "text-navy/40" : "text-navy hover:text-red"
                 }`}
               >
-                What We Do
+                Expertise
                 <motion.span animate={{ rotate: whatWeDoOpen ? 180 : 0 }} transition={{ duration: 0.25, ease: "easeInOut" }} className="text-[11px]">
                   ▾
                 </motion.span>
@@ -147,7 +147,7 @@ export default function Nav() {
                   whoWeAreOpen ? "text-navy/40" : "text-navy hover:text-red"
                 }`}
               >
-                Who We Are
+               Agency
                 <motion.span animate={{ rotate: whoWeAreOpen ? 180 : 0 }} transition={{ duration: 0.25, ease: "easeInOut" }} className="text-[11px]">
                   ▾
                 </motion.span>
