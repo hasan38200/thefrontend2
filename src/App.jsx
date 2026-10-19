@@ -8,11 +8,12 @@ import Industries from "./pages/Industries";
 import IndustryDetail from "./pages/IndustryDetail";
 import Places from "./pages/Places";
 import CityDetail from "./pages/CityDetail";
-import WhatWeDo from "./pages/WhatWeDo";   
+import WhatWeDo from "./pages/WhatWeDo";
 import AboutUs from "./pages/AboutUs";
 import Careers from "./pages/Careers";
-import Blog from "./pages/Blog"; // <-- NEW
+import Blog from "./pages/Blog";
 import Reports from "./pages/Reports";
+import InfluencerDetail from "./pages/InfluencerDetail";
 
 export default function App() {
   useLenis();
@@ -32,9 +33,10 @@ export default function App() {
     { path: "/what-we-do", element: <WhatWeDo /> },
     { path: "/about-us", element: <AboutUs /> },
     { path: "/careers", element: <Careers /> },
-    { path: "/blog", element: <Blog /> },  // <-- NEW
-    { path: "/reports", element: <Reports /> }
-  ]);
+    { path: "/blog", element: <Blog /> },
+    { path: "/reports", element: <Reports /> },
+    { path: "/influencer", element: <InfluencerDetail /> },
+  ],loc);
 
   return (
     <div className="min-h-screen bg-cream">
@@ -43,7 +45,7 @@ export default function App() {
 
       {moved.current && (
         <motion.div
-          key={loc.pathname}
+          key={loc.key}
           className="pointer-events-none fixed inset-0 z-[90] bg-red"
           initial={{ y: "100%" }}
           animate={{ y: ["100%", "0%", "0%", "-100%"] }}
@@ -61,7 +63,7 @@ export default function App() {
         }}
       >
         <motion.main
-          key={loc.pathname}
+          key={loc.key} // <-- CHANGED FROM pathname to key
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
