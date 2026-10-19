@@ -84,13 +84,13 @@ export default function InfluencerDetail() {
 
   return (
     <Sec className="bg-cream min-h-screen">
-      <div className="mx-auto max-w-6xl px-5 pt-[10%] pb-20 md:px-10">
+      <div className="mx-auto max-w-6xl px-5 pt-[5%] pb-20 md:px-10 ">
 
         <Reveal>
           <a
             href="#"
             onClick={handleBack}
-            className="mb-8 inline-flex items-center gap-2 text-base font-semibold text-navy transition-colors hover:text-red cursor-pointer"
+            className=" inline-flex pb-9 items-center gap-2 text-base font-semibold text-navy transition-colors hover:text-red cursor-pointer"
           >
             <span>←</span> Back
           </a>
