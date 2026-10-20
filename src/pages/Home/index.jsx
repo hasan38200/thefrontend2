@@ -17,7 +17,7 @@ export default function Home({ ready }) {
   return (
     <>
       <Hero ready={ready} />
-      <Marquee />
+      <Marquee/>
       <Why />
       <Method />
       <Scorecard />

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Btn, goTo, ease } from "../../../ui";
 import { HERO_LABELS } from "../../../data";
 import HeroSlider from "../HeroSlider";
+import { Link } from "react-router"; // Imported Link for the first button
 
 const LINES = [
   { lead: "The right ", word: "talent." },
@@ -10,8 +11,8 @@ const LINES = [
   { lead: "The right ", word: "audience." },
 ];
 
-const RED = "#BE1D23";
-const NORMAL = "inherit"; // keeps the natural heading color when not active
+const RED = "#92EEFF";
+const NORMAL = "inherit";
 
 export default function Hero({ ready }) {
   const fade = (d) => ({
@@ -33,23 +34,23 @@ export default function Hero({ ready }) {
     const startDelay = setTimeout(() => {
       const interval = setInterval(() => {
         setActive((a) => (a + 1) % LINES.length);
-      }, 500); // ← faster: 1.2 seconds per word
+      }, 500); 
       return () => clearInterval(interval);
     }, REVEAL_END * 1000);
     return () => clearTimeout(startDelay);
   }, [ready]);
 
   return (
-    <section className="overflow-hidden bg-cream px-5 pb-8 pt-24 md:px-10 md:pt-28 lg:flex lg:min-h-screen lg:items-center">
+    <section className="overflow-hidden bg-navy px-5 pb-8 pt-24 md:px-10 md:pt-28 lg:flex lg:min-h-screen lg:items-center">
       <div className="mx-auto grid w-full max-w-7xl items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div>
-          <motion.p {...fade(0.1)} className="mb-4 text-base font-semibold text-red md:text-lg">
+          <motion.p {...fade(0.1)} className="mb-4 text-base font-semibold text-[#92EEFF] md:text-lg">
             Research-led creative talent agency
           </motion.p>
 
           <h1
             aria-label="The right talent. The right message. The right audience."
-            className="font-display !text-3xl leading-[0.95] sm:!text-4xl xl:!text-5xl"
+            className="font-display text-white !text-3xl leading-[0.95] sm:!text-4xl xl:!text-5xl"
           >
             {LINES.map((line, i) => {
               const lineDelay = LINE_DELAY + i * LINE_STEP;
@@ -59,7 +60,7 @@ export default function Hero({ ready }) {
                 <span
                   key={line.word}
                   aria-hidden
-                  className="block overflow-hidden pb-[0.1em] -mb-[0.1em]"
+                  className="block overflow-hidden pb-[0.1em] -mb-[0.1em] text-white"
                 >
                   <motion.span
                     className="block"
@@ -68,11 +69,10 @@ export default function Hero({ ready }) {
                     transition={{ duration: REVEAL_DURATION, delay: lineDelay, ease }}
                   >
                     {line.lead}
-                    {/* Last word: only red highlight when active, natural color otherwise */}
                     <motion.span
                       className="inline"
                       animate={{ color: isActive ? RED : NORMAL }}
-                      transition={{ duration: 0.5, ease: "easeInOut" }} // ← faster fade
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
                       {line.word}
                     </motion.span>
@@ -82,13 +82,28 @@ export default function Hero({ ready }) {
             })}
           </h1>
 
-          <motion.p {...fade(2.4)} className="mt-5 max-w-xl text-lg leading-relaxed">
+          <motion.p {...fade(2.4)} className="mt-5 max-w-xl text-lg leading-relaxed text-white">
             We research, recommend and direct the creators, influencers, models and actors best suited to your niche, your audience and your market, from Karachi and Lahore to New York and Canada.
           </motion.p>
 
           <motion.div {...fade(2.6)} className="mt-6 flex flex-wrap gap-3">
-            <Btn to="/brief">Find your right talent</Btn>
-            <Btn v="ghost" onClick={() => goTo("services")}>See packages</Btn>
+            
+            {/* Button 1: White bg, navy text -> hover: sky blue bg, red text */}
+            <Link 
+              to="/brief" 
+              className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy transition-colors duration-300 hover:bg-[#92EEFF] hover:text-red md:text-base"
+            >
+              Find your right talent
+            </Link>
+            
+            {/* Button 2: Transparent bg, white text -> hover: sky blue bg, white text */}
+            <a 
+              href="#services"
+              onClick={(e) => { e.preventDefault(); goTo("services"); }}
+              className="inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-colors duration-800 hover:border-[#92EEFF] hover:text-[#92EEFF] md:text-base"
+            >
+              See packages
+            </a>
           </motion.div>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -99,9 +114,9 @@ export default function Hero({ ready }) {
                 animate={ready ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 2.8 + i * 0.1, type: "spring", stiffness: 160, damping: 14 }}
                 whileHover={{ y: -3 }}
-                className="rounded-full border border-navy/30 px-4 py-2 text-sm"
+                className="rounded-full border border-white/30 px-4 py-2 text-sm text-white"
               >
-                <span className="mr-2 font-semibold text-red">{n}</span>
+                <span className="mr-2 font-semibold text-[#92EEFF]">{n}</span>
                 {l}
               </motion.span>
             ))}

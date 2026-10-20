@@ -72,14 +72,17 @@ export default function Nav() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-navy/10 bg-cream/90 backdrop-blur">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy/90 text-white backdrop-blur">
         <motion.div
           className="absolute inset-x-0 bottom-0 h-[3px] origin-left bg-red"
           style={{ scaleX: prog }}
         />
 
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-10">
-          <Link to="/" onClick={() => setOpen(false)}>
+        {/* 3-column grid layout to center the nav perfectly */}
+        <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center px-4 py-3 md:px-10">
+          
+          {/* Left: Logo */}
+          <Link to="/" onClick={() => setOpen(false)} className="justify-self-start">
             <img
               src="/logo-mark.png"
               alt="The Right Talent Agency"
@@ -87,10 +90,10 @@ export default function Nav() {
             />
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden items-center gap-6 lg:flex">
+          {/* Center: Desktop Nav */}
+          <nav className="hidden items-center justify-center gap-6 lg:flex">
             
-            {/* Right Location (formerly Places) - Moved to first position */}
+            {/* Right Location */}
             <div
               className="relative"
               onMouseEnter={() => { setPlacesOpen(true); closeAllExcept("places"); }}
@@ -98,7 +101,7 @@ export default function Nav() {
             >
               <button
                 className={`flex items-center gap-1 text-[15px] font-semibold transition-colors ${
-                  placesOpen ? "text-navy/40" : "text-navy hover:text-red"
+                  placesOpen ? "text-white/40" : "text-white hover:text-red"
                 }`}
               >
                 Right location
@@ -111,10 +114,10 @@ export default function Nav() {
                 {placesOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="absolute left-0 top-full z-50 mt-3 w-[820px] max-w-[95vw] rounded-3xl border border-navy/10 bg-cream p-8 shadow-2xl"
+                    className="absolute left-0 top-full z-50 mt-3 w-[820px] max-w-[95vw] rounded-3xl border border-white/10 bg-navy p-8 shadow-2xl"
                   >
-                    <div className="mb-6 flex items-baseline justify-between border-b border-navy/15 pb-4">
-                      <h3 className="font-display text-3xl font-semibold text-navy">Right location</h3>
+                    <div className="mb-6 flex items-baseline justify-between border-b border-white/15 pb-4">
+                      <h3 className="font-display text-3xl font-semibold text-white">Right location</h3>
                       <Link to="/places" onClick={() => setPlacesOpen(false)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </Link>
@@ -131,7 +134,7 @@ export default function Nav() {
                                 key={city}
                                 to={`/city?city=${encodeURIComponent(city)}`}
                                 onClick={() => setPlacesOpen(false)}
-                                className="border-b border-navy/15 py-2 text-sm font-medium text-navy transition-colors hover:border-red hover:text-red"
+                                className="border-b border-white/10 py-2 text-sm font-medium text-white transition-colors hover:border-red hover:text-red"
                               >
                                 {city}
                               </Link>
@@ -145,7 +148,7 @@ export default function Nav() {
               </AnimatePresence>
             </div>
 
-            {/* Right Industries (formerly Industries) - Moved to second position */}
+            {/* Right Industries */}
             <div
               className="relative"
               onMouseEnter={() => { setIndustriesOpen(true); closeAllExcept("industries"); }}
@@ -153,7 +156,7 @@ export default function Nav() {
             >
               <button
                 className={`flex items-center gap-1 text-[15px] font-semibold transition-colors ${
-                  industriesOpen ? "text-navy/40" : "text-navy hover:text-red"
+                  industriesOpen ? "text-white/40" : "text-white hover:text-red"
                 }`}
               >
                 Right industries
@@ -166,10 +169,10 @@ export default function Nav() {
                 {industriesOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="absolute left-0 top-full z-50 mt-3 w-[820px] max-w-[95vw] rounded-3xl border border-navy/10 bg-cream p-8 shadow-2xl"
+                    className="absolute left-0 top-full z-50 mt-3 w-[820px] max-w-[95vw] rounded-3xl border border-white/10 bg-navy p-8 shadow-2xl"
                   >
-                    <div className="mb-6 flex items-baseline justify-between border-b border-navy/15 pb-4">
-                      <h3 className="font-display text-3xl font-semibold text-navy">Right industries</h3>
+                    <div className="mb-6 flex items-baseline justify-between border-b border-white/15 pb-4">
+                      <h3 className="font-display text-3xl font-semibold text-white">Right industries</h3>
                       <Link to="/industries" onClick={() => setIndustriesOpen(false)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </Link>
@@ -180,7 +183,7 @@ export default function Nav() {
                           key={industry.name}
                           to={`/influencers?industry=${encodeURIComponent(industry.name)}`}
                           onClick={() => setIndustriesOpen(false)}
-                          className="border-b border-navy/15 py-2.5 text-sm text-navy transition-colors hover:border-red hover:text-red"
+                          className="border-b border-white/10 py-2.5 text-sm text-white transition-colors hover:border-red hover:text-red"
                         >
                           {industry.name}
                         </Link>
@@ -191,7 +194,7 @@ export default function Nav() {
               </AnimatePresence>
             </div>
 
-            {/* Expertise Dropdown (formerly What We Do) */}
+            {/* Expertise */}
             <div
               className="relative"
               onMouseEnter={() => { setWhatWeDoOpen(true); closeAllExcept("whatWeDo"); }}
@@ -199,7 +202,7 @@ export default function Nav() {
             >
               <button
                 className={`flex items-center gap-1 text-[15px] font-semibold transition-colors ${
-                  whatWeDoOpen ? "text-navy/40" : "text-navy hover:text-red"
+                  whatWeDoOpen ? "text-white/40" : "text-white hover:text-red"
                 }`}
               >
                 Expertise
@@ -212,10 +215,10 @@ export default function Nav() {
                 {whatWeDoOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="absolute left-0 top-full z-50 mt-3 w-[360px] rounded-3xl border border-navy/10 bg-cream p-6 shadow-2xl"
+                    className="absolute left-1/2 -translate-x-1/2 top-full z-50 mt-3 w-[360px] rounded-3xl border border-white/10 bg-navy p-6 shadow-2xl"
                   >
-                    <div className="mb-4 flex items-baseline justify-between border-b border-navy/15 pb-4">
-                      <h3 className="font-display text-3xl font-semibold text-navy">What We Do</h3>
+                    <div className="mb-4 flex items-baseline justify-between border-b border-white/15 pb-4">
+                      <h3 className="font-display text-3xl font-semibold text-white">What We Do</h3>
                       <button onClick={() => goToWhatWeDo(null)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </button>
@@ -225,7 +228,7 @@ export default function Nav() {
                         <button
                           key={item.label}
                           onClick={() => goToWhatWeDo(item.to.split("#")[1])}
-                          className="border-b border-navy/15 py-3 text-left font-display text-base font-semibold text-navy transition-colors hover:text-red last:border-b-0"
+                          className="border-b border-white/10 py-3 text-left font-display text-base font-semibold text-white transition-colors hover:text-red last:border-b-0"
                         >
                           {item.label}
                         </button>
@@ -236,7 +239,7 @@ export default function Nav() {
               </AnimatePresence>
             </div>
 
-            {/* Agency Dropdown (formerly Who We Are) */}
+            {/* Agency */}
             <div
               className="relative"
               onMouseEnter={() => { setWhoWeAreOpen(true); closeAllExcept("whoWeAre"); }}
@@ -244,7 +247,7 @@ export default function Nav() {
             >
               <button
                 className={`flex items-center gap-1 text-[15px] font-semibold transition-colors ${
-                  whoWeAreOpen ? "text-navy/40" : "text-navy hover:text-red"
+                  whoWeAreOpen ? "text-white/40" : "text-white hover:text-red"
                 }`}
               >
                 Agency
@@ -257,10 +260,10 @@ export default function Nav() {
                 {whoWeAreOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="absolute left-0 top-full z-50 mt-3 w-[360px] rounded-3xl border border-navy/10 bg-cream p-6 shadow-2xl"
+                    className="absolute left-1/2 -translate-x-1/2 top-full z-50 mt-3 w-[360px] rounded-3xl border border-white/10 bg-navy p-6 shadow-2xl"
                   >
-                    <div className="mb-4 flex items-baseline justify-between border-b border-navy/15 pb-4">
-                      <h3 className="font-display text-3xl font-semibold text-navy">Who We Are</h3>
+                    <div className="mb-4 flex items-baseline justify-between border-b border-white/15 pb-4">
+                      <h3 className="font-display text-3xl font-semibold text-white">Who We Are</h3>
                     </div>
                     <div className="flex flex-col">
                       {WHO_WE_ARE.map((item) => (
@@ -268,7 +271,7 @@ export default function Nav() {
                           key={item.label}
                           to={item.to}
                           onClick={() => setWhoWeAreOpen(false)}
-                          className="border-b border-navy/15 py-3 text-left font-display text-base font-semibold text-navy transition-colors hover:text-red last:border-b-0"
+                          className="border-b border-white/10 py-3 text-left font-display text-base font-semibold text-white transition-colors hover:text-red last:border-b-0"
                         >
                           {item.label}
                         </Link>
@@ -279,14 +282,14 @@ export default function Nav() {
               </AnimatePresence>
             </div>
 
-            {/* Workflow (formerly How we work) */}
+            {/* Workflow */}
             {otherNavItems.map((item) =>
               item.children ? (
-                <button key={item.label} onClick={() => item.children[0] && go(item.children[0].to)} className="text-[15px] font-semibold text-navy transition-colors hover:text-red">
+                <button key={item.label} onClick={() => item.children[0] && go(item.children[0].to)} className="text-[15px] font-semibold text-white transition-colors hover:text-red">
                   Workflow
                 </button>
               ) : (
-                <button key={item.label} onClick={() => go(item.to)} className="text-[15px] font-semibold text-navy transition-colors hover:text-red">
+                <button key={item.label} onClick={() => go(item.to)} className="text-[15px] font-semibold text-white transition-colors hover:text-red">
                   Workflow
                 </button>
               )
@@ -300,7 +303,7 @@ export default function Nav() {
             >
               <button
                 className={`flex items-center gap-1 text-[15px] font-semibold transition-colors ${
-                  latestOpen ? "text-navy/40" : "text-navy hover:text-red"
+                  latestOpen ? "text-white/40" : "text-white hover:text-red"
                 }`}
               >
                 Latest
@@ -313,10 +316,10 @@ export default function Nav() {
                 {latestOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="absolute right-0 top-full z-50 mt-3 w-[360px] rounded-3xl border border-navy/10 bg-cream p-6 shadow-2xl"
+                    className="absolute right-0 top-full z-50 mt-3 w-[360px] rounded-3xl border border-white/10 bg-navy p-6 shadow-2xl"
                   >
-                    <div className="mb-4 flex items-baseline justify-between border-b border-navy/15 pb-4">
-                      <h3 className="font-display text-3xl font-semibold text-navy">Latest</h3>
+                    <div className="mb-4 flex items-baseline justify-between border-b border-white/15 pb-4">
+                      <h3 className="font-display text-3xl font-semibold text-white">Latest</h3>
                     </div>
                     <div className="flex flex-col">
                       {LATEST.map((item) => (
@@ -324,7 +327,7 @@ export default function Nav() {
                           key={item.label}
                           to={item.to}
                           onClick={() => setLatestOpen(false)}
-                          className="border-b border-navy/15 py-3 text-left font-display text-base font-semibold text-navy transition-colors hover:text-red last:border-b-0"
+                          className="border-b border-white/10 py-3 text-left font-display text-base font-semibold text-white transition-colors hover:text-red last:border-b-0"
                         >
                           {item.label}
                         </Link>
@@ -335,23 +338,27 @@ export default function Nav() {
               </AnimatePresence>
             </div>
 
+          </nav>
+
+          {/* Right: Contact Us Button */}
+          <div className="hidden lg:block justify-self-end">
             <Link
               to="/brief"
-              className="rounded-full bg-red px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-red/90"
+              className="rounded-full bg-[#92EEFF] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#FFFFFF] hover:text-red"
             >
               Contact Us
             </Link>
-          </nav>
+          </div>
 
           {/* Mobile Hamburger */}
           <button
-            className="relative flex h-10 w-10 items-center justify-center lg:hidden"
+            className="relative flex h-10 w-10 items-center justify-center lg:hidden justify-self-end"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
-            <span className={`absolute h-0.5 w-6 rounded-full bg-navy transition-all duration-300 ${open ? "rotate-45" : "-translate-y-2"}`} />
-            <span className={`absolute h-0.5 w-6 rounded-full bg-navy transition-all duration-300 ${open ? "opacity-0" : ""}`} />
-            <span className={`absolute h-0.5 w-6 rounded-full bg-navy transition-all duration-300 ${open ? "-rotate-45" : "translate-y-2"}`} />
+            <span className={`absolute h-0.5 w-6 rounded-full bg-white transition-all duration-300 ${open ? "rotate-45" : "-translate-y-2"}`} />
+            <span className={`absolute h-0.5 w-6 rounded-full bg-white transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+            <span className={`absolute h-0.5 w-6 rounded-full bg-white transition-all duration-300 ${open ? "-rotate-45" : "translate-y-2"}`} />
           </button>
         </div>
       </header>
