@@ -344,7 +344,7 @@ export default function Nav() {
           <div className="hidden lg:block justify-self-end">
             <Link
               to="/brief"
-              className="rounded-full bg-[#92EEFF] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#FFFFFF] hover:text-red"
+              className="rounded-full bg-[#FFFFFF] px-6 py-3 text-sm font-semibold text-navy transition-colors hover:text-red"
             >
               Contact Us
             </Link>
