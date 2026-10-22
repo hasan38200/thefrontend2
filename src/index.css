@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-    background: #0F344E;
+    background: #f8f8f8;
 }
 
 /* Force Bricolage Grotesque on EVERY element */
@@ -20,7 +20,7 @@ textarea {
 }
 
 body {
-    @apply bg-navy text-navy antialiased;
+    @apply bg-white text-navy antialiased;
 }
 
 html.lenis,

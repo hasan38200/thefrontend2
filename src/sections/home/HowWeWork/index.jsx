@@ -19,15 +19,15 @@ export default function HowWeWork() {
           >
             <motion.div
               whileHover={{ y: -8 }}
-              className="flex h-full flex-col items-center rounded-3xl border border-navy/15 p-6 text-center transition-shadow hover:shadow-[0_14px_0_-8px_#669BBB]"
+              className="flex h-full flex-col items-center rounded-3xl border  border-[navy]/15 p-6 text-center "
             >
               <motion.span
                 whileHover={{ rotate: -8, scale: 1.1 }}
-                className="mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-sky font-display text-2xl font-bold"
+                className="mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-navy text-white font-display text-2xl font-bold"
               >
                 {i + 1}
               </motion.span>
-              <h3 className="font-display">{t}</h3>
+              <h3 className="font-display text-red">{t}</h3>
               <p className="mt-2 text-sm leading-relaxed">{d}</p>
             </motion.div>
           </Reveal>

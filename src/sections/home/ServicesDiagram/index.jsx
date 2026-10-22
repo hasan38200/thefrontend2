@@ -5,7 +5,7 @@ import { CATS, HERO_LABELS, u, IMG } from "../../../data";
 
 const CH = [
   "bg-navy text-white border border-[#92EEFF]/40",
-  "bg-[#92EEFF] text-white border border-[#92EEFF]",
+  "bg-red text-white border border-red",
   "bg-transparent text-navy border border-navy",
   "bg-red text-white border border-red/40",
 ];

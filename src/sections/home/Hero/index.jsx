@@ -14,7 +14,7 @@ const LINES = [
 const RED = "#92EEFF";
 const NORMAL = "inherit";
 
-export default function Hero({ ready }) {
+export default function Hero({ready=true}) {
   const fade = (d) => ({
     initial: { opacity: 0, y: 24 },
     animate: ready ? { opacity: 1, y: 0 } : {},

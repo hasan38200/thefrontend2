@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useLocation, useRoutes } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, Brief } from "./pages";
-import { Nav, Footer, Preloader, Cursor } from "./components";
+import { Nav, Footer, Cursor } from "./components"; // Removed Preloader
 import useLenis from "./hooks/useLenis";
 import Industries from "./pages/Industries";
 import IndustryDetail from "./pages/IndustryDetail";
@@ -17,14 +17,15 @@ import InfluencerDetail from "./pages/InfluencerDetail";
 
 export default function App() {
   useLenis();
-  const [ready, setReady] = useState(false);
+  // Removed `const [ready, setReady] = useState(false);`
+  
   const loc = useLocation();
   const first = useRef(loc.pathname);
   const moved = useRef(false);
   if (loc.pathname !== first.current) moved.current = true;
 
   const page = useRoutes([
-    { path: "/", element: <Home ready={ready} /> },
+    { path: "/", element: <Home /> }, // Removed ready={ready}
     { path: "/brief", element: <Brief /> },
     { path: "/industries", element: <Industries /> },
     { path: "/influencers", element: <IndustryDetail /> },
@@ -36,17 +37,18 @@ export default function App() {
     { path: "/blog", element: <Blog /> },
     { path: "/reports", element: <Reports /> },
     { path: "/influencer", element: <InfluencerDetail /> },
-  ],loc);
+  ], loc);
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen !bg-white">
       <Cursor />
-      <AnimatePresence>{!ready && <Preloader done={() => setReady(true)} />}</AnimatePresence>
+      
+      {/* REMOVED THE PRELOADER BLOCK COMPLETELY */}
 
       {moved.current && (
         <motion.div
           key={loc.key}
-          className="pointer-events-none fixed inset-0 z-[90] bg-red"
+          className="pointer-events-none fixed inset-0 z-[90] "
           initial={{ y: "100%" }}
           animate={{ y: ["100%", "0%", "0%", "-100%"] }}
           transition={{ duration: 1.3, times: [0, 0.4, 0.55, 1], ease: "easeInOut" }}
@@ -63,7 +65,7 @@ export default function App() {
         }}
       >
         <motion.main
-          key={loc.key} // <-- CHANGED FROM pathname to key
+          key={loc.key} 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
