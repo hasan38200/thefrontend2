@@ -4,7 +4,7 @@ import { Btn, goTo, ease } from "../../../ui";
 import { HERO_LABELS } from "../../../data";
 import HeroSlider from "../HeroSlider";
 import { Link } from "react-router"; // Imported Link for the first button
-
+import { btnMotion } from "../../../btnMotion";
 const LINES = [
   { lead: "The right ", word: "talent." },
   { lead: "The right ", word: "message." },
@@ -42,7 +42,7 @@ export default function Hero({ ready }) {
 
   return (
     <section className="overflow-hidden bg-navy px-5 pb-8 pt-24 md:px-10 md:pt-28 lg:flex lg:min-h-screen lg:items-center">
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-8 lg:grid-cols-2 lg:gap-12">
+      <div className="mx-auto mt-4 grid w-full max-w-7xl items-top gap-8 lg:grid-cols-2 lg:gap-12">
         <div>
           <motion.p {...fade(0.1)} className="mb-4 text-base font-semibold text-[#92EEFF] md:text-lg">
             Research-led creative talent agency
@@ -89,21 +89,25 @@ export default function Hero({ ready }) {
           <motion.div {...fade(2.6)} className="mt-6 flex flex-wrap gap-3">
             
             {/* Button 1: White bg, navy text -> hover: sky blue bg, red text */}
-            <Link 
-              to="/brief" 
-              className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy transition-colors duration-300 hover:bg-[#92EEFF] hover:text-red md:text-base"
-            >
-              Find your right talent
-            </Link>
-            
-            {/* Button 2: Transparent bg, white text -> hover: sky blue bg, white text */}
-            <a 
-              href="#services"
-              onClick={(e) => { e.preventDefault(); goTo("services"); }}
-              className="inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-colors duration-800 hover:border-[#92EEFF] hover:text-[#92EEFF] md:text-base"
-            >
-              See packages
-            </a>
+            {/* Button 1 */}
+<motion.span {...btnMotion} className="inline-block">
+  <Link
+    to="/brief"
+    className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-red transition-colors duration-300 hover:text-navy md:text-base"
+  >
+    Find your right talent
+  </Link>
+</motion.span>
+
+{/* Button 2 */}
+<motion.a
+  {...btnMotion}
+  href="#services"
+  onClick={(e) => { e.preventDefault(); goTo("services"); }}
+  className="inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:border-[#92EEFF] hover:text-[#92EEFF] md:text-base"
+>
+  See packages
+</motion.a>
           </motion.div>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -128,7 +132,7 @@ export default function Hero({ ready }) {
           animate={ready ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, delay: 0.5, ease }}
         >
-          <HeroSlider />
+          <HeroSlider/>
         </motion.div>
       </div>
     </section>

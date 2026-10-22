@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router";
 import { goTo } from "../../ui";
 import {
-  Hero, Marquee, Why, Method, Scorecard, Services, HowWeWork, Stats,
+  Hero, Marquee, Why, Method, Services, HowWeWork, Stats,
   Difference, Talent, Testimonials, WhoWeWork, JoinTalent, FinalCta,
 } from "../../sections/home";
 
@@ -20,7 +20,6 @@ export default function Home({ ready }) {
       <Marquee/>
       <Why />
       <Method />
-      <Scorecard />
       <Services />
       <HowWeWork />
       <Stats />

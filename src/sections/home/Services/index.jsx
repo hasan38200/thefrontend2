@@ -7,14 +7,14 @@ import MonthlyPlans from "../MonthlyPlans";
 function AnimatedLine() {
   return (
     <motion.div
-      className="relative mt-8 h-[3px] w-full origin-center overflow-hidden rounded-full bg-navy/15"
+      className="relative mt-8 h-[3px] w-full origin-center overflow-hidden rounded-full bg-cream"
       initial={{ scaleX: 0, opacity: 0 }}
       whileInView={{ scaleX: 1, opacity: 1 }}
       viewport={{ once: false, amount: 0.8 }}
       transition={{ duration: 1.2, ease }}
     >
       <motion.span
-        className="absolute inset-y-0 left-0 w-1/4 rounded-full bg-red"
+        className="absolute inset-y-0 left-0 w-1/4 rounded-full bg-[#92EEFF]"
         animate={{ x: ["-100%", "400%"] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -25,7 +25,7 @@ function AnimatedLine() {
 export default function Services() {
   return (
     <Sec id="services">
-      <H2 className="mx-auto text-center">Start with research. Scale to a full campaign.</H2>
+      <H2 className="mx-auto text-center text-red">Start with research. Scale to a full campaign.</H2>
       <ServicesDiagram />
 
       <AnimatedLine />

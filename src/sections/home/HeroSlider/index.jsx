@@ -34,8 +34,8 @@ function Col({c,dir,speed}){
  // Removed the image ID from the items, keeping only the category name and video source
  const items=[0,1,2,3,4].map(i=>[CATS[(i+c*2)%5], VIDEOS[(c*2+i)%VIDEOS.length]]);
 
- return <div onMouseEnter={()=>hover.current=true} onMouseLeave={()=>hover.current=false}>
-  <motion.div ref={ref} style={{y}} className="flex flex-col gap-3">{[...items,...items].map(([t,vid],i)=>
+ return <div onMouseEnter={()=>hover.current=true} onMouseLeave={()=>hover.current=false} >
+  <motion.div ref={ref} style={{y}} className="flex flex-col gap-3 justify-start">{[...items,...items].map(([t,vid],i)=>
    <motion.div
      key={i}
      whileHover={{scale:1.03}}
@@ -55,7 +55,7 @@ function Col({c,dir,speed}){
     />
 
     {/* Category text in #92EEFF */}
-    <span className="pointer-events-none absolute bottom-3 left-3 z-10 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-[#92EEFF] backdrop-blur-md">{t}</span>
+    <span className="pointer-events-none absolute bottom-3 left-3 z-10 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-[#FFFFFF] backdrop-blur-md">{t}</span>
    </motion.div>)}
   </motion.div></div>;}
 
