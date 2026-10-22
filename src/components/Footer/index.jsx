@@ -27,7 +27,7 @@ export default function Footer() {
 
           {/* Agency Links */}
           <div className="md:col-span-2 ">
-            <p className="mb-4 text-xs font-bold uppercase tracking-wider text-red">Agency</p>
+            <p className="mb-4 text-xs font-bold uppercase tracking-wider text-[#92EEFF]">Agency</p>
             <ul className="space-y-2 text-sm text-white">
               {[["Our method", "method"], ["Services", "services"], ["How we work", "how"], ["Talent", "talent"]].map(([l, id]) => (
                 <li key={id}>
@@ -39,7 +39,7 @@ export default function Footer() {
 
           {/* Contact Links */}
           <div className="md:col-span-2">
-            <p className="mb-4 text-xs font-bold uppercase tracking-wider text-red">Contact</p>
+            <p className="mb-4 text-xs font-bold uppercase tracking-wider text-[#92EEFF]">Contact</p>
             <ul className="space-y-2 text-sm text-white">
               <li>hello@therighttalent.com</li>
               <li>+92 300 1234567</li>
@@ -49,7 +49,7 @@ export default function Footer() {
 
           {/* Follow Links */}
           <div className="md:col-span-2">
-            <p className="mb-4 text-xs font-bold uppercase tracking-wider text-red">Follow</p>
+            <p className="mb-4 text-xs font-bold uppercase tracking-wider text-[#92EEFF]">Follow</p>
             <ul className="space-y-2 text-sm text-white">
               <li><a href="#" className="transition-colors hover:text-red">Instagram</a></li>
               <li><a href="#" className="transition-colors hover:text-red">LinkedIn</a></li>
