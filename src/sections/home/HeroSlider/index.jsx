@@ -42,10 +42,8 @@ function Col({c,dir,speed}){
      onMouseLeave={stopVideo}
      className={`relative overflow-hidden rounded-2xl sm:rounded-3xl ${SHAPES[(i+c*2)%3]} group`}
    >
-    {/* Poster image shows first; video plays on hover */}
     <video
       src={vid}
-      poster={u(id,600)}
       muted
       loop
       playsInline
