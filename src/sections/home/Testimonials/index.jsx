@@ -67,7 +67,7 @@ function TestimonialCard({ data, i }) {
         whileHover={reduce ? {} : { y: -6 }}
         className="h-full"
       >
-        <Tilt className="group relative flex h-full min-h-[280px] flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-7 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] backdrop-blur-xl transition-colors duration-500 hover:border-[#92EEFF]/40 hover:bg-white/[0.06]">
+        <Tilt className="group relative flex h-full min-h-[240px] flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] backdrop-blur-xl transition-colors duration-500 hover:border-[#92EEFF]/40 hover:bg-white/[0.06] sm:min-h-[280px] sm:rounded-3xl sm:p-7">
           
           {/* Spotlight Overlay */}
           <motion.div
@@ -77,30 +77,30 @@ function TestimonialCard({ data, i }) {
           />
 
           {/* Top Row: User Info & Glowing Logo */}
-          <div className="relative z-10 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="relative rounded-full p-[2px] bg-gradient-to-tr from-[#92EEFF] to-purple-500">
+          <div className="relative z-10 flex items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-3">
+              <div className="relative shrink-0 rounded-full p-[2px] bg-gradient-to-tr from-[#92EEFF] to-purple-500">
                 <Img 
                   src={u(IMG.hero[(i * 2) % 12], 200)} 
                   parallax={false} 
-                  className="h-11 w-11 rounded-full border-2 border-navy object-cover"
+                  className="h-10 w-10 rounded-full border-2 border-navy object-cover sm:h-11 sm:w-11"
                 />
               </div>
-              <div>
-                <p className="text-sm font-semibold text-white">{data.name}</p>
-                <p className="text-xs text-white/50">{data.role}</p>
+              <div className="min-w-0">
+                <p className="truncate text-sm font-semibold text-white">{data.name}</p>
+                <p className="truncate text-xs text-white/50">{data.role}</p>
               </div>
             </div>
             
             {/* Glowing Brand Logo */}
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 border border-white/10 text-[#92EEFF] shadow-[0_0_15px_rgba(146,238,255,0.2)] transition-all duration-500 group-hover:shadow-[0_0_25px_rgba(146,238,255,0.4)] group-hover:bg-[#92EEFF]/10">
-              <LogoIcon className="h-5 w-5" strokeWidth={2} />
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/10 text-[#92EEFF] shadow-[0_0_15px_rgba(146,238,255,0.2)] transition-all duration-500 group-hover:shadow-[0_0_25px_rgba(146,238,255,0.4)] group-hover:bg-[#92EEFF]/10 sm:h-10 sm:w-10">
+              <LogoIcon className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={2} />
             </div>
           </div>
 
           {/* Quote Text */}
-          <div className="relative z-10 my-6">
-            <p className="text-[15px] leading-relaxed text-white/80 transition-colors duration-300 group-hover:text-white">
+          <div className="relative z-10 my-5 sm:my-6">
+            <p className="text-sm leading-relaxed text-white/80 transition-colors duration-300 group-hover:text-white sm:text-[15px]">
               "{data.quote}"
             </p>
           </div>
@@ -125,13 +125,13 @@ export default function Testimonials() {
             aria-hidden
             animate={{ scale: [1, 1.2, 1], x: [0, 40, 0], y: [0, 30, 0] }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="pointer-events-none absolute -left-32 top-10 h-[30rem] w-[30rem] rounded-full bg-[#92EEFF]/15 blur-[100px]"
+            className="pointer-events-none absolute -left-32 top-10 h-72 w-72 rounded-full bg-[#92EEFF]/15 blur-[100px] md:h-[30rem] md:w-[30rem]"
           />
           <motion.div
             aria-hidden
             animate={{ scale: [1, 1.3, 1], x: [0, -50, 0], y: [0, -40, 0] }}
             transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-            className="pointer-events-none absolute -right-32 bottom-0 h-[30rem] w-[30rem] rounded-full bg-purple-600/15 blur-[100px]"
+            className="pointer-events-none absolute -right-32 bottom-0 h-72 w-72 rounded-full bg-purple-600/15 blur-[100px] md:h-[30rem] md:w-[30rem]"
           />
         </>
       )}
@@ -140,11 +140,9 @@ export default function Testimonials() {
         <div className="text-center">
           <Eyebrow className="text-[14px] !text-[#92EEFF]">Client Stories</Eyebrow>
           <H2 className="mx-auto !text-white">Trusted by brands that demand the right fit.</H2>
-          
-         
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {TESTIMONIALS.map((data, i) => (
             <TestimonialCard key={data.name} data={data} i={i} />
           ))}

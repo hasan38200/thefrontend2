@@ -29,7 +29,7 @@ export default function MonthlyPlans() {
   return (
     <motion.div
       onMouseMove={onMove}
-      className="group relative mt-12 overflow-hidden rounded-bl-[4rem] rounded-tr-[4rem] border-[1.5px] border-navy bg-navy p-7 shadow-2xl shadow-navy/30 md:rounded-bl-[6rem] md:rounded-tr-[6rem] md:p-14"
+      className="group relative mt-8 overflow-hidden rounded-bl-[2.5rem] rounded-tr-[2.5rem] border-[1.5px] border-navy bg-navy p-5 shadow-2xl shadow-navy/30 sm:mt-10 sm:rounded-bl-[4rem] sm:rounded-tr-[4rem] sm:p-8 md:mt-12 md:rounded-bl-[5rem] md:rounded-tr-[5rem] md:p-10 lg:rounded-bl-[6rem] lg:rounded-tr-[6rem] lg:p-14"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.2 }}
@@ -49,13 +49,13 @@ export default function MonthlyPlans() {
             aria-hidden
             animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#92EEFF]/20 blur-3xl"
+            className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#92EEFF]/20 blur-3xl sm:-right-20 sm:-top-20 md:h-72 md:w-72"
           />
           <motion.span
             aria-hidden
             animate={{ y: [0, -30, 0], x: [0, 24, 0] }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-sky/25 blur-3xl"
+            className="pointer-events-none absolute -bottom-20 -left-12 h-48 w-48 rounded-full bg-sky/25 blur-3xl sm:-bottom-24 sm:-left-16 md:h-72 md:w-72"
           />
         </>
       )}
@@ -72,23 +72,23 @@ export default function MonthlyPlans() {
       )}
 
       <div className="relative z-10">
-        <h3 className="font-display text-[#92EEFF] !text-3xl !font-extrabold md:!text-4xl">
+        <h3 className="font-display text-[#92EEFF] !text-2xl !font-extrabold sm:!text-3xl md:!text-4xl">
           We also work on a monthly basis
         </h3>
 
         
 
-        <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/90">
+        <p className="mt-3 max-w-xl text-base leading-relaxed text-white/90 sm:mt-4 sm:text-lg">
           For brands with a steady flow of briefs. Defined monthly scope, regular planning, one team that knows your brand.
         </p>
 
-        <div className="mt-6">
+        <div className="mt-5 sm:mt-6">
           <Mag>
             {/* Same spring tilt button animation as the rest of the site */}
-            <motion.div {...btnMotion} className="inline-block">
+            <motion.div {...btnMotion} className="inline-block max-w-full">
               <Link
                 to="/brief"
-                className="group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-[#92EEFF] bg-transparent px-8 py-4 text-base font-semibold text-[#92EEFF] transition-colors duration-300 hover:bg-[#92EEFF] hover:text-navy"
+                className="group/btn relative inline-flex max-w-full items-center justify-center gap-3 overflow-hidden rounded-full border border-[#92EEFF] bg-transparent px-5 py-3 text-center text-sm font-semibold text-[#92EEFF] transition-colors duration-300 hover:bg-[#92EEFF] hover:text-navy sm:px-8 sm:py-4 sm:text-base"
               >
                 {/* NEW: shimmer sweep */}
                 <span
@@ -105,14 +105,14 @@ export default function MonthlyPlans() {
           </Mag>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3 md:gap-6">
+        <div className="mt-8 grid gap-4 sm:gap-5 md:mt-10 md:grid-cols-3 md:gap-4 lg:gap-6">
           {RET.map((r, i) => (
             <Reveal key={r[0]} delay={i * 0.12}>
               {/* NEW: glass card with lift, border glow and corner glow on hover */}
               <motion.div
                 whileHover={{ y: -8 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="group/card relative h-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-colors duration-500 hover:border-[#92EEFF]/50 hover:bg-white/10"
+                className="group/card relative h-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-colors duration-500 hover:border-[#92EEFF]/50 hover:bg-white/10 lg:p-6"
               >
                 {/* NEW: corner glow that fades in on hover */}
                 <span
@@ -131,15 +131,15 @@ export default function MonthlyPlans() {
                 />
 
                 {/* NEW: number badge that spins on hover */}
-                <span className="mt-5 inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#92EEFF]/50 text-xs font-bold text-[#92EEFF] transition-transform duration-700 group-hover/card:rotate-[360deg]">
+                <span className="mt-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#92EEFF]/50 text-[11px] font-bold text-[#92EEFF] transition-transform duration-700 group-hover/card:rotate-[360deg] sm:mt-5 sm:h-9 sm:w-9 sm:text-xs">
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
-                <h4 className="mt-4 font-display !text-xl !font-semibold text-white transition-transform duration-300 group-hover/card:translate-x-1 md:!text-2xl">
+                <h4 className="mt-3 font-display !text-lg !font-semibold text-white transition-transform duration-300 group-hover/card:translate-x-1 sm:mt-4 sm:!text-xl lg:!text-2xl">
                   {r[0]}
                 </h4>
-                <p className="mt-1 text-xl font-semibold text-[#92EEFF]">Monthly retainer</p>
-                <p className="mt-3 leading-relaxed text-white/75">{r[1]}</p>
+                <p className="mt-1 text-base font-semibold text-[#92EEFF] sm:text-lg lg:text-xl">Monthly retainer</p>
+                <p className="mt-2 text-sm leading-relaxed text-white/75 sm:mt-3 sm:text-base">{r[1]}</p>
 
                 {/* NEW: accent bar draws along the bottom on hover */}
                 <span

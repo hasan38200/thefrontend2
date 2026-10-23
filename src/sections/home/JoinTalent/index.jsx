@@ -4,15 +4,15 @@ import { btnMotion } from "../../../btnMotion";
 
 export default function JoinTalent() {
   return (
-    <section id="join" className="bg-white px-5 pt-6 md:px-10 md:pt-8">
+    <section id="join" className="bg-white px-4 pt-5 sm:px-5 sm:pt-6 md:px-10 md:pt-8">
       <motion.div
-        className="mx-auto flex max-w-[92rem] flex-col justify-between gap-8 rounded-bl-[5rem] rounded-tr-[5rem] bg-navy px-7 py-12 text-cream md:flex-row md:items-center md:rounded-bl-[9rem] md:rounded-tr-[9rem] md:px-20 md:py-20"
+        className="mx-auto flex max-w-[92rem] flex-col justify-between gap-6 rounded-bl-[3rem] rounded-tr-[3rem] bg-navy px-6 py-10 text-cream sm:gap-8 sm:rounded-bl-[4rem] sm:rounded-tr-[4rem] sm:px-8 sm:py-12 md:rounded-bl-[6rem] md:rounded-tr-[6rem] md:px-12 md:py-16 lg:flex-row lg:items-center lg:rounded-bl-[9rem] lg:rounded-tr-[9rem] lg:px-20 lg:py-20"
         initial={{ opacity: 0, y: 60, scale: 0.96 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: false, amount: 0.25 }}
         transition={{ duration: 0.9, ease }}
       >
-        <div className="md:max-w-3xl">
+        <div className="lg:max-w-3xl">
           <Eyebrow dark className="uppercase tracking-[0.18em] !text-[#92EEFF]">For creators</Eyebrow>
           <h2 className="font-display !font-extrabold !tracking-tight text-white">
             <Words text="Are you the" className="!inline-block" />
@@ -20,7 +20,7 @@ export default function JoinTalent() {
             <Words text="talent?" className="!inline-block" delay={0.3} />
           </h2>
           <Reveal>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white">
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-white sm:mt-4 sm:text-lg">
               UGC creators, influencers, models, actors and presenters: apply to join our roster. We vet every application and match you only with brands that genuinely fit your niche and audience.
             </p>
           </Reveal>
@@ -32,7 +32,7 @@ export default function JoinTalent() {
             <motion.div {...btnMotion} className="inline-block">
               <a
                 href="mailto:[YOUR EMAIL]"
-                className="group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-white border px-9 py-5 text-lg font-semibold text-navy transition-colors duration-300 hover:bg-cream hover:text-navy"
+                className="group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-red px-7 py-4 text-base font-semibold text-cream transition-colors duration-300 hover:bg-cream hover:text-navy sm:px-9 sm:py-5 sm:text-lg"
               >
                 {/* Shimmer sweep */}
                 <span
@@ -41,7 +41,7 @@ export default function JoinTalent() {
                 />
                 <span className="relative">Apply to join</span>
                 {/* Arrow slides in */}
-                <span className="relative inline-block -translate-x-2 transition-all duration-300 group-hover/btn:translate-x-0 group-hover/btn:opacity-100 ">
+                <span className="relative inline-block -translate-x-2 opacity-0 transition-all duration-300 group-hover/btn:translate-x-0 group-hover/btn:opacity-100">
                   →
                 </span>
               </a>

@@ -34,7 +34,7 @@ function ParallaxImage() {
   const y = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [-24, 24]);
 
   return (
-    <div ref={ref} className="relative h-52 overflow-hidden">
+    <div ref={ref} className="relative h-40 overflow-hidden sm:h-48 md:h-52">
       <motion.div style={{ y, scale: 1.15 }} className="h-full w-full">
         <Img src={u(IMG.method, 900)} className="h-full w-full object-cover" />
       </motion.div>
@@ -70,7 +70,7 @@ function Card({ i, title, text }) {
       >
         {/* ORIGINAL: Tilt */}
         <Tilt
-          className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-2xl ${s.cls}`}
+          className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl transition-shadow duration-500 hover:shadow-2xl sm:rounded-3xl ${s.cls}`}
         >
           {/* NEW: cursor spotlight */}
           <motion.div
@@ -91,25 +91,25 @@ function Card({ i, title, text }) {
               aria-hidden
               animate={{ y: [0, -14, 0], x: [0, 8, 0] }}
               transition={{ duration: 7 + i, repeat: Infinity, ease: "easeInOut" }}
-              className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-3xl"
+              className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10 blur-3xl sm:h-40 sm:w-40"
             />
           )}
 
           {/* ORIGINAL image on the first card, now with parallax */}
           {i === 0 && <ParallaxImage />}
 
-          <div className="relative z-10 p-6">
+          <div className="relative z-10 p-4 sm:p-5 md:p-6">
             {/* NEW: number badge that spins on hover */}
             <span
-              className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full border text-xs font-bold transition-transform duration-700 group-hover:rotate-[360deg] ${s.badge}`}
+              className={`mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full border text-[11px] font-bold transition-transform duration-700 group-hover:rotate-[360deg] sm:mb-4 sm:h-10 sm:w-10 sm:text-xs ${s.badge}`}
             >
               {String(i + 1).padStart(2, "0")}
             </span>
 
-            <h3 className="font-display text-2xl transition-transform duration-300 group-hover:translate-x-1">
+            <h3 className="font-display text-lg transition-transform duration-300 group-hover:translate-x-1 sm:text-xl md:text-2xl">
               {title}
             </h3>
-            <p className={`mt-2 leading-relaxed ${s.text}`}>{text}</p>
+            <p className={`mt-2 text-sm leading-relaxed sm:text-base ${s.text}`}>{text}</p>
           </div>
 
           {/* NEW: accent bar that draws in on hover */}
@@ -136,55 +136,42 @@ export default function Method() {
             aria-hidden
             animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
             transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-            className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#92EEFF]/25 blur-3xl"
+            className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-[#92EEFF]/25 blur-3xl md:h-80 md:w-80"
           />
           <motion.div
             aria-hidden
             animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
             transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-            className="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-sky/20 blur-3xl"
+            className="pointer-events-none absolute -left-24 bottom-0 h-52 w-52 rounded-full bg-sky/20 blur-3xl md:h-72 md:w-72"
           />
         </>
       )}
 
       <div className="relative">
         {/* Header (original Eyebrow, H2 and Reveal kept) */}
-        <div className="grid items-end gap-4 md:grid-cols-2 md:gap-12">
+        <div className="grid items-end gap-3 sm:gap-4 md:grid-cols-2 md:gap-12">
           <div>
             <div className="flex items-center gap-3">
-              {/* NEW: line that draws in */}
-             
               <Eyebrow className="text-[14px] text-red">Our method</Eyebrow>
             </div>
 
-       <H2 className="text-navy">Six kinds of fit, checked before we recommend anyone.</H2>
+            <H2 className="text-navy">Six kinds of fit, checked before we recommend anyone.</H2>
 
-{/* NEW: animated gradient line under the heading (replaces the gradient text) */}
-<motion.span
-  aria-hidden
-  initial={{ width: 0 }}
-  whileInView={{ width: 96 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.9, delay: 0.3, ease }}
-  animate={reduce ? undefined : { backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-  style={{ backgroundSize: "200% 100%" }}
-  className="mt-4 block h-1 rounded-full bg-gradient-to-r from-navy via-sky to-red"
-/>
-              {/* NEW: moving gradient on the first words */}
-              <motion.span
-                animate={reduce ? undefined : { backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                style={{ backgroundSize: "200% 100%" }}
-                className="bg-gradient-to-r from-navy via-sky to-red bg-clip-text text-transparent"
-              >
-                Six kinds of fit,
-              </motion.span>{" "}
-              checked before we recommend anyone.
-           
+            {/* NEW: animated gradient line under the heading */}
+            <motion.span
+              aria-hidden
+              initial={{ width: 0 }}
+              whileInView={{ width: 96 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, delay: 0.3, ease }}
+              animate={reduce ? undefined : { backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+              style={{ backgroundSize: "200% 100%" }}
+              className="mt-3 block h-1 rounded-full bg-gradient-to-r from-navy via-sky to-red sm:mt-4"
+            />
           </div>
 
           <Reveal>
-            <p className="text-lg text-navy/70">
+            <p className="text-base text-navy/70 sm:text-lg">
               Every shortlist comes with a written rationale, profile links, indicative rates and clear notes on
               what data is verified, and what isn't.
             </p>
@@ -192,7 +179,7 @@ export default function Method() {
         </div>
 
         {/* Cards grid */}
-        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-12">
+        <div className="mt-6 grid gap-3 sm:mt-8 sm:gap-4 md:grid-cols-2 lg:grid-cols-12">
           {METHOD.map(([t, d], i) => (
             <Card key={t} i={i} title={t} text={d} />
           ))}

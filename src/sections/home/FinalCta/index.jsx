@@ -5,15 +5,15 @@ import { btnMotion } from "../../../btnMotion";
 
 export default function FinalCta() {
   return (
-    <section className="bg-white px-5 pb-10 pt-6 md:px-10 md:pb-12 md:pt-8">
+    <section className="bg-white px-4 pb-8 pt-5 sm:px-5 sm:pb-10 sm:pt-6 md:px-10 md:pb-12 md:pt-8">
       <motion.div
-        className="bg-red mx-auto flex max-w-[92rem] flex-col justify-between gap-8 rounded-br-[5rem] rounded-tl-[5rem] bg-cream px-7 py-12  text-navy md:flex-row md:items-center md:rounded-br-[9rem] md:rounded-tl-[9rem] md:px-20 md:py-20"
+        className="bg-red mx-auto flex max-w-[92rem] flex-col justify-between gap-6 rounded-br-[3rem] rounded-tl-[3rem] bg-cream px-6 py-10 text-navy sm:gap-8 sm:rounded-br-[4rem] sm:rounded-tl-[4rem] sm:px-8 sm:py-12 md:rounded-br-[6rem] md:rounded-tl-[6rem] md:px-12 md:py-16 lg:flex-row lg:items-center lg:rounded-br-[9rem] lg:rounded-tl-[9rem] lg:px-20 lg:py-20"
         initial={{ opacity: 0, y: 60, scale: 0.96 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: false, amount: 0.25 }}
         transition={{ duration: 0.9, ease }}
       >
-        <div className="md:max-w-3xl">
+        <div className="lg:max-w-3xl">
           <Eyebrow className="uppercase tracking-[0.18em] !text-navy">For brands</Eyebrow>
           <h2 className="font-display !font-extrabold !tracking-tight">
             <Words text="Not just any talent. The" className="!inline-block text-white" />
@@ -28,7 +28,7 @@ export default function FinalCta() {
             <motion.div {...btnMotion} className="inline-block">
               <Link
                 to="/brief"
-                className="group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-white px-9 py-5 text-lg font-semibold text-navy transition-colors duration-300 hover:bg-navy hover:text-white"
+                className="group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-white px-7 py-4 text-base font-semibold text-navy transition-colors duration-300 hover:bg-navy hover:text-white sm:px-9 sm:py-5 sm:text-lg"
               >
                 {/* Shimmer sweep */}
                 <span

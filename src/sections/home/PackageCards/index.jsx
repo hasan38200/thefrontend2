@@ -12,9 +12,9 @@ import { btnMotion } from "../../../btnMotion";
 /* Colors designed for a white background */
 const ST = [
   {
-    box: "bg-white border border-navy/15 text-navy rounded-tr-[5rem] shadow-sm hover:shadow-2xl hover:shadow-navy/10",
+    box: "bg-white border border-navy/15 text-navy rounded-tr-[3rem] sm:rounded-tr-[5rem] shadow-sm hover:shadow-2xl hover:shadow-navy/10",
     dark: false,
-    eye: "text-[#92EEFF]",
+    eye: "text-red",
     dash: "text-red",
     glow: "rgba(102,155,187,0.25)",
     accent: "bg-red",
@@ -32,9 +32,9 @@ const ST = [
     blob: "bg-[#92EEFF]/20",
   },
   {
-    box: "bg-sky/10 border border-sky/30 text-navy rounded-tl-[5rem] hover:shadow-2xl hover:shadow-sky/20",
+    box: "bg-sky/10 border border-sky/30 text-navy rounded-tl-[3rem] sm:rounded-tl-[5rem] hover:shadow-2xl hover:shadow-sky/20",
     dark: false,
-    eye: "text-[#92EEFF]",
+    eye: "text-navy",
     dash: "text-sky",
     glow: "rgba(146,238,255,0.35)",
     accent: "bg-navy",
@@ -63,7 +63,7 @@ function PackageCard({ p, i }) {
         onMouseMove={onMove}
         whileHover={{ y: -8 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className={`group relative flex h-full flex-col overflow-hidden p-8 transition-shadow duration-500 md:p-10 ${s.box}`}
+        className={`group relative flex h-full flex-col overflow-hidden p-6 transition-shadow duration-500 sm:p-8 md:p-10 ${s.box}`}
       >
         {/* NEW: spotlight */}
         <motion.div
@@ -84,13 +84,13 @@ function PackageCard({ p, i }) {
             aria-hidden
             animate={{ y: [0, -16, 0], x: [0, 10, 0] }}
             transition={{ duration: 7 + i * 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className={`pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full blur-3xl ${s.blob}`}
+            className={`pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full blur-3xl sm:h-44 sm:w-44 ${s.blob}`}
           />
         )}
 
         <div className="relative z-10 flex h-full flex-col">
           <div className="flex items-start justify-between gap-3">
-            <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${s.eye}`}>{p.tag}</p>
+            <p className={`text-xs font-semibold uppercase tracking-[0.18em] sm:text-sm ${s.eye}`}>{p.tag}</p>
 
             {p.best && (
               <motion.span
@@ -104,7 +104,7 @@ function PackageCard({ p, i }) {
                 <motion.span
                   animate={reduce ? undefined : { y: [0, -4, 0] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative block rounded-full bg-transparent border border[#92EEFF] px-4 py-2 text-center text-sm font-semibold leading-tight text-[#92EEFF]"
+                  className="relative block rounded-full bg-white px-3 py-1.5 text-center text-xs font-semibold leading-tight text-navy sm:px-4 sm:py-2 sm:text-sm"
                 >
                   {!reduce && (
                     <motion.span
@@ -120,10 +120,10 @@ function PackageCard({ p, i }) {
             )}
           </div>
 
-          <h3 className="font-display !text-3xl !font-extrabold md:!text-4xl">{p.n}</h3>
-          <p className={`mt-4 text-lg leading-relaxed ${s.dark ? "text-white/85" : "text-navy/75"}`}>{p.d}</p>
+          <h3 className="font-display !text-2xl !font-extrabold sm:!text-3xl md:!text-4xl">{p.n}</h3>
+          <p className={`mt-3 text-base leading-relaxed sm:mt-4 sm:text-lg ${s.dark ? "text-white/85" : "text-navy/75"}`}>{p.d}</p>
 
-          <ul className="mb-8 mt-6 flex-1 space-y-2.5">
+          <ul className="mb-6 mt-5 flex-1 space-y-2 text-sm sm:mb-8 sm:mt-6 sm:space-y-2.5 sm:text-base">
             {p.f.map((f, j) => (
               <motion.li
                 key={f}
@@ -138,11 +138,10 @@ function PackageCard({ p, i }) {
             ))}
           </ul>
 
-          {/* Button: same spring tilt as the rest of the site (includes scale + tap) */}
           <motion.div {...btnMotion}>
             <Link
               to="/brief"
-              className={`group/btn relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-full py-5 text-center text-lg font-semibold transition-colors duration-300 ${s.btn}`}
+              className={`group/btn relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-full py-4 text-center text-base font-semibold transition-colors duration-300 sm:py-5 sm:text-lg ${s.btn}`}
             >
               {/* NEW: shimmer sweep across the button */}
               <span
@@ -170,7 +169,7 @@ function PackageCard({ p, i }) {
 
 export default function PackageCards() {
   return (
-    <div className="mt-8 grid items-stretch gap-5 lg:grid-cols-3">
+    <div className="mt-6 grid items-stretch gap-4 sm:mt-8 sm:gap-5 lg:grid-cols-3">
       {PKGS.map((p, i) => (
         <PackageCard key={p.n} p={p} i={i} />
       ))}

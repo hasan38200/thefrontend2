@@ -7,7 +7,7 @@ import MonthlyPlans from "../MonthlyPlans";
 function AnimatedLine() {
   return (
     <motion.div
-      className="relative mt-8 h-[3px] w-full origin-center overflow-hidden rounded-full bg-cream"
+      className="relative mt-6 h-[3px] w-full origin-center overflow-hidden rounded-full bg-cream sm:mt-8"
       initial={{ scaleX: 0, opacity: 0 }}
       whileInView={{ scaleX: 1, opacity: 1 }}
       viewport={{ once: false, amount: 0.8 }}
@@ -31,8 +31,6 @@ export default function Services() {
       <AnimatedLine />
 
       <PackageCards />
-
-
 
       <MonthlyPlans />
     </Sec>

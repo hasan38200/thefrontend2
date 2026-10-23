@@ -10,7 +10,7 @@ export default function HowWeWork() {
         <H2 className="mx-auto">From brief to report, in seven clear steps.</H2>
       </div>
 
-      <div className="mt-10 flex flex-wrap justify-center gap-5">
+      <div className="mt-6 flex flex-wrap justify-center gap-3 sm:mt-8 sm:gap-5 md:mt-10">
         {STEPS.map(([t, d], i) => (
           <Reveal
             key={t}
@@ -19,16 +19,16 @@ export default function HowWeWork() {
           >
             <motion.div
               whileHover={{ y: -8 }}
-              className="flex h-full flex-col items-center rounded-3xl border  border-[navy]/15 p-6 text-center "
+              className="flex h-full flex-col items-center rounded-2xl border border-[navy]/15 p-4 text-center sm:rounded-3xl sm:p-6"
             >
               <motion.span
                 whileHover={{ rotate: -8, scale: 1.1 }}
-                className="mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-navy text-white font-display text-2xl font-bold"
+                className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-navy font-display text-lg font-bold text-white sm:mb-4 sm:h-14 sm:w-14 sm:rounded-2xl sm:text-2xl"
               >
                 {i + 1}
               </motion.span>
-              <h3 className="font-display text-red">{t}</h3>
-              <p className="mt-2 text-sm leading-relaxed">{d}</p>
+              <h3 className="font-display text-lg text-red sm:text-xl">{t}</h3>
+              <p className="mt-2 text-xs leading-relaxed sm:text-sm">{d}</p>
             </motion.div>
           </Reveal>
         ))}
