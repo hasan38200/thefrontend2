@@ -216,7 +216,7 @@ export default function WhatWeDo() {
             transition={{ duration: 0.8, ease }}
           >
             <p className="text-xs font-bold uppercase tracking-widest text-red md:text-sm">
-              What we do
+              Expertise
             </p>
             <h1 className="mt-4 font-display text-3xl font-semibold leading-[1.1] text-navy md:text-4xl lg:text-5xl">
               The <span className="font-serif italic text-red">right</span> talent, content and media, working as one.

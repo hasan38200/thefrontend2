@@ -5,7 +5,8 @@ import {useMotionValue,useAnimationFrame,useScroll,useVelocity} from "framer-mot
 
 const SHAPES=["aspect-[4/5]","aspect-square","aspect-[3/4]"];
 
-// Only these two videos are used, repeated across all cards
+// "#t=0.1" makes the browser show a frame at 0.1s straight away,
+// so the card is never blank before you hover it
 const VIDEOS = [
   "/videos/video-1.mp4",
   "/videos/video-2.mp4",
@@ -18,7 +19,7 @@ const playVideo = (e) => {
 
 const stopVideo = (e) => {
   const v = e.currentTarget.querySelector("video");
-  if (v) { v.pause(); v.currentTime = 0; }
+  if (v) { v.pause(); v.currentTime = 0.1; }  // back to the visible frame, not a blank 0
 };
 
 function Col({c,dir,speed}){
@@ -27,7 +28,6 @@ function Col({c,dir,speed}){
  useAnimationFrame((_,dt)=>{
   const h=ref.current?.scrollHeight/2;
   if(!h)return;
-  // clamp dt so switching tabs or a lag spike never makes the column jump
   const d=Math.min(dt,50);
   v.current+=((hover.current?0:speed+Math.min(Math.abs(sv.get())*.04,140))-v.current)*.08;
   let n=y.get()+dir*v.current*d/1000;
@@ -36,16 +36,14 @@ function Col({c,dir,speed}){
   y.set(n);
  });
 
- // 6 items per column; the list is doubled below for the endless loop
  const items=[0,1,2,3,4,5].map(i=>[
    CATS[(i+c*2)%5],
    IMG.hero[(c*4+i)%IMG.hero.length],
-   VIDEOS[(i+c)%VIDEOS.length]   // alternates the two videos, offset per column
+   VIDEOS[(i+c)%VIDEOS.length]
  ]);
 
  return (
   <div onMouseEnter={()=>hover.current=true} onMouseLeave={()=>hover.current=false}>
-   {/* no flex gap: spacing is a bottom margin on each card, so exactly half the height is one full loop */}
    <motion.div ref={ref} style={{y}} className="flex flex-col will-change-transform">
     {[...items,...items].map(([t,id,vid],i)=>
      <motion.div
@@ -54,14 +52,14 @@ function Col({c,dir,speed}){
        transition={{type:"spring",stiffness:300,damping:20}}
        onMouseEnter={playVideo}
        onMouseLeave={stopVideo}
-       className={`relative mb-2 overflow-hidden rounded-2xl bg-white/10 sm:mb-3 sm:rounded-3xl ${SHAPES[(i+c*2)%3]} group`}
+       className={`relative mb-2 overflow-hidden rounded-2xl bg-navy sm:mb-3 sm:rounded-3xl ${SHAPES[(i+c*2)%3]} group`}
      >
       <video
         src={vid}
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         className="absolute inset-0 h-full w-full object-cover"
       />
 

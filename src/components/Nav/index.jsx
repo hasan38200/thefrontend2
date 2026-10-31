@@ -201,7 +201,7 @@ export default function Nav() {
                   whatWeDoOpen ? "text-white/40" : "text-white hover:text-red"
                 }`}
               >
-                What We Do
+                Expertise
                 <motion.span animate={{ rotate: whatWeDoOpen ? 180 : 0 }} transition={{ duration: 0.25, ease: "easeInOut" }} className="text-[11px]">
                   ▾
                 </motion.span>
