@@ -1,4 +1,4 @@
-import {motion,useScroll,useTransform,useVelocity,useSpring} from "framer-motion";
+import { motion, useScroll, useTransform, useVelocity, useSpring } from "framer-motion";
 
 // Logos from Simple Icons, coloured dark navy (#0F2C3D) by the URL itself.
 const LOGOS = [
@@ -40,13 +40,20 @@ const Row = ({ rev }) => (
   </motion.div>
 );
 
-export default function Marquee(){
-  const {scrollY} = useScroll();
+export default function Marquee() {
+  const { scrollY } = useScroll();
   const v = useSpring(useVelocity(scrollY), { stiffness: 100, damping: 30 });
   const sk = useTransform(v, [-2000, 2000], [-8, 8]);
 
   return (
     <div className="overflow-hidden bg-white py-5 sm:py-6 md:py-8">
+      {/* Added Heading */}
+      <div className="mb-6 text-center sm:mb-8">
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6B7C8C] sm:text-xs">
+          Campaigns across every major platform
+        </p>
+      </div>
+
       <motion.div style={{ skewX: sk }} className="space-y-3 sm:space-y-4 md:space-y-6">
         <Row />
         <Row rev />

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Btn, goTo, ease } from "../../../ui";
-import { HERO_LABELS } from "../../../data";
 import HeroSlider from "../HeroSlider";
 import { Link } from "react-router"; // Imported Link for the first button
 import { btnMotion } from "../../../btnMotion";
@@ -83,7 +82,7 @@ export default function Hero({ready=true}) {
           </h1>
 
           <motion.p {...fade(2.4)} className="mt-4 max-w-xl text-sm leading-relaxed text-white sm:mt-5 sm:text-base md:text-lg">
-            We research, recommend and direct the creators, influencers, models and actors best suited to your niche, your audience and your market, from Karachi and Lahore to New York and Canada.
+            Every recommendation starts with research into your product, customers and your market,so the creators,influencers,models and actors you get actually fit,from Karachi and Lahore to New York and Canada.
           </motion.p>
 
           <motion.div {...fade(2.6)} className="mt-5 flex flex-wrap gap-2.5 sm:mt-6 sm:gap-3">
@@ -105,25 +104,10 @@ export default function Hero({ready=true}) {
               onClick={(e) => { e.preventDefault(); goTo("services"); }}
               className="inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-300 hover:border-[#92EEFF] hover:text-[#92EEFF] sm:px-6 sm:py-3 md:text-base"
             >
-              See packages
+             I'm a creator
             </motion.a>
           </motion.div>
 
-          <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
-            {HERO_LABELS.map(([n, l], i) => (
-              <motion.span
-                key={n}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={ready ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 2.8 + i * 0.1, type: "spring", stiffness: 160, damping: 14 }}
-                whileHover={{ y: -3 }}
-                className="rounded-full border border-white/30 px-3 py-1.5 text-xs text-white sm:px-4 sm:py-2 sm:text-sm"
-              >
-                <span className="mr-1.5 font-semibold text-[#92EEFF] sm:mr-2">{n}</span>
-                {l}
-              </motion.span>
-            ))}
-          </div>
         </div>
 
         <motion.div

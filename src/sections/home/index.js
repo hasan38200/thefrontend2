@@ -13,3 +13,5 @@ export {default as Testimonials} from "./Testimonials";
 export {default as WhoWeWork} from "./WhoWeWork";
 export {default as JoinTalent} from "./JoinTalent";
 export {default as FinalCta} from "./FinalCta";
+export { default as CreatorsOfEverySize } from "./CreatorsOfEverySize";
+export { default as FAQ } from "./FAQ";
