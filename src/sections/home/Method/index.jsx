@@ -14,13 +14,13 @@ import { METHOD, u, IMG } from "../../../data";
 const SPECS = [
   // 0 — Image Placeholder
   { 
-    span: "", // No span, equal size
+    span: "lg:col-span-3 lg:row-span-2", 
     cls: "bg-[#E5E9EC] border border-transparent p-0", 
     isImage: true 
   },
   // 1 — Geographic fit (Navy)
   { 
-    span: "", 
+    span: "lg:col-span-3", 
     cls: "bg-[#10334A] border border-[#10334A] shadow-sm", 
     textCls: "text-white", 
     pCls: "text-white/80",
@@ -28,15 +28,15 @@ const SPECS = [
   },
   // 2 — Niche fit (Navy)
   { 
-    span: "", 
+    span: "lg:col-span-3", 
     cls: "bg-[#10334A] border border-[#10334A] shadow-sm", 
     textCls: "text-white", 
     pCls: "text-white/80",
     badge: "bg-white text-[#10334A]" 
   },
-  // 3 — Audience fit (White)
+  // 3 — Audience fit (White / Tall)
   { 
-    span: "", 
+    span: "lg:col-span-3 lg:row-span-2", 
     cls: "bg-white border border-navy/10 shadow-sm", 
     textCls: "text-navy", 
     pCls: "text-navy/70",
@@ -44,7 +44,7 @@ const SPECS = [
   },
   // 4 — Brand fit (White)
   { 
-    span: "", 
+    span: "lg:col-span-3", 
     cls: "bg-white border border-navy/10 shadow-sm", 
     textCls: "text-navy", 
     pCls: "text-navy/70",
@@ -52,7 +52,7 @@ const SPECS = [
   },
   // 5 — Campaign fit (White)
   { 
-    span: "", 
+    span: "lg:col-span-3", 
     cls: "bg-white border border-navy/10 shadow-sm", 
     textCls: "text-navy", 
     pCls: "text-navy/70",
@@ -60,7 +60,7 @@ const SPECS = [
   },
   // 6 — Creative direction (Navy)
   { 
-    span: "", 
+    span: "lg:col-span-3", 
     cls: "bg-[#10334A] border border-[#10334A] shadow-sm", 
     textCls: "text-white", 
     pCls: "text-white/80",
@@ -76,7 +76,7 @@ function ParallaxImage() {
   const y = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [-20, 20]);
 
   return (
-    <div ref={ref} className="relative h-full w-full min-h-[220px] overflow-hidden rounded-[1.25rem]">
+    <div ref={ref} className="relative h-full w-full min-h-[300px] overflow-hidden rounded-[1.25rem]">
       <motion.div style={{ y, scale: 1.05 }} className="h-full w-full">
         <Img src={u(IMG.method, 900)} className="h-full w-full object-cover" />
       </motion.div>
@@ -192,8 +192,8 @@ export default function Method() {
           </Reveal>
         </div>
 
-        {/* Clean Uniform Grid Layout */}
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 12-Column Grid exactly matching the UI layout */}
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:auto-rows-[minmax(210px,auto)]">
           {METHOD.map(([t, d], i) => (
             <Card key={t} i={i} title={t} text={d} />
           ))}

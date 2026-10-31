@@ -7,53 +7,11 @@ const ROLES = ["UGC creator", "Influencer", "Model", "Actor / presenter", "Photo
 export default function CreatorForm() {
   const [roles, setRoles] = useState([]);
   const [form, setForm] = useState({ name: "", email: "", phone: "", link: "", niche: "" });
-  const [status, setStatus] = useState(""); // "", "sending", "success", "error"
   
   const toggleRole = (r) => {
-    setRoles((prev) => prev.includes(r) ? prev.filter((x) => x !== r) : [...prev, r]);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("sending");
-
-    // Build FormData manually with Failsafe defaults
-    const formData = new FormData();
-    
-    // Failsafe: Ensure strings are actually strings and not undefined/null
-    formData.append("fullName", form.name?.trim() || "Unknown Creator");
-    formData.append("email", form.email?.trim() || "No Email Provided");
-    formData.append("phone", form.phone?.trim() || "No Phone Provided");
-    formData.append("role", "Creator Application");
-    formData.append("portfolio", form.link?.trim() || "N/A");
-    
-    // Safely join the roles
-    const selectedRoles = roles.length > 0 ? roles.join(", ") : "None selected";
-    formData.append("why", `Roles: ${selectedRoles}\nNiche: ${form.niche?.trim() || "No niche provided"}`);
-    
-    // Add a dummy file or extra field just in case the backend demands it
-    formData.append("cvFile", "N/A"); 
-
-    try {
-      const response = await fetch("https://thebackend-teal.vercel.app/api/apply", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        setStatus("success");
-        setRoles([]);
-        setForm({ name: "", email: "", phone: "", link: "", niche: "" });
-      } else {
-        // Log the error response if backend sends one
-        const errorData = await response.json().catch(() => ({}));
-        console.error("Backend Error:", errorData);
-        setStatus("error");
-      }
-    } catch (error) {
-      console.error("Network Error:", error);
-      setStatus("error");
-    }
+    setRoles((prev) => 
+      prev.includes(r) ? prev.filter((x) => x !== r) : [...prev, r]
+    );
   };
 
   const p = { form, setForm };
@@ -100,11 +58,11 @@ export default function CreatorForm() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="rounded-[2.5rem] border border-gray-100 bg-white p-6 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
       >
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
           
           <div className="grid gap-5 sm:grid-cols-2">
-            <Input label="Full name" name="name" required {...p} />
-            <Input label="Email" name="email" type="email" required {...p} />
+            <Input label="Full name" name="name" {...p} />
+            <Input label="Email" name="email" type="email" {...p} />
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2">
@@ -140,16 +98,9 @@ export default function CreatorForm() {
 
           <Input label="Your niche" name="niche" placeholder="e.g. skincare, food, fashion" {...p} />
 
-          <button type="submit" disabled={status === "sending"} className="mt-4 w-full rounded-full bg-red py-3.5 text-[15px] font-bold text-white transition hover:bg-[#a81b2a] disabled:opacity-50">
-            {status === "sending" ? "Sending..." : "Submit application"}
+          <button type="submit" className="mt-4 w-full rounded-full bg-red py-3.5 text-[15px] font-bold text-white transition hover:bg-[#a81b2a]">
+            Submit application
           </button>
-          
-          {status === "success" && (
-            <p className="text-center text-[14px] font-bold text-green-600 mt-2">Application sent successfully! We'll be in touch.</p>
-          )}
-          {status === "error" && (
-            <p className="text-center text-[14px] font-bold text-red-600 mt-2">Something went wrong. Please check the console.</p>
-          )}
           
           <p className="text-center text-[12px] text-navy/50">
             Takes under a minute.

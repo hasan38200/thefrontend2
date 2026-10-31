@@ -170,18 +170,18 @@ function FaqItem({ q, a, index }) {
   const [open, setOpen] = useState(false);
   return (
     <Reveal delay={index * 0.05}>
-      <div className="border-b border-[#0F2C3D]/20">
+      <div className="border-b border-navy/30">
         <button
           onClick={() => setOpen((v) => !v)}
-          className="flex w-full items-center justify-between gap-4 py-5 text-left text-[15px] font-bold text-[#0F2C3D] transition-colors hover:text-[#C82333] md:text-[16px]"
+          className="flex w-full items-center justify-between gap-4 py-5 text-left text-base font-semibold text-navy transition-colors hover:text-red md:text-lg"
         >
           <span>{q}</span>
           <motion.span
             animate={{ rotate: open ? 45 : 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="text-xl font-light leading-none text-[#C82333]"
+            className="text-xl leading-none text-red"
           >
-            {open ? "×" : "+"}
+            +
           </motion.span>
         </button>
         <AnimatePresence initial={false}>
@@ -193,7 +193,7 @@ function FaqItem({ q, a, index }) {
               transition={{ duration: 0.4, ease }}
               className="overflow-hidden"
             >
-              <p className="pb-5 text-[14px] leading-relaxed text-[#0F2C3D]/70">{a}</p>
+              <p className="pb-5 text-sm leading-relaxed text-navy/75 md:text-base">{a}</p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -352,67 +352,64 @@ export default function WhatWeDo() {
           ))}
         </div>
 
-        {/* GETTING STARTED — 3 STEPS (Matched to UI) */}
-        <div className="mt-28 bg-[#0F2C3D] rounded-[2rem] p-8 md:p-12">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-white/60">
+        {/* GETTING STARTED — 3 STEPS */}
+        <div className="mt-28 rounded-2xl bg-navy p-8 md:p-12">
+          <p className="text-xs font-bold uppercase tracking-widest text-cream/70 md:text-sm">
             Getting started
           </p>
-          <h2 className="mt-3 max-w-xl font-display text-[2.2rem] font-bold leading-[1.1] text-white md:text-[2.75rem]">
+          <h2 className="mt-3 max-w-xl font-display text-3xl font-semibold text-cream md:text-4xl lg:text-5xl">
             Three steps to your first campaign.
           </h2>
 
-          <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
-            {/* Step 1 */}
+          <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-3">
             <Reveal delay={0}>
               <motion.div
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="flex aspect-[5/4] flex-col justify-between rounded-tr-[2.5rem] bg-white p-6 text-[#0F2C3D] md:p-7"
+                className="flex aspect-[5/4] flex-col justify-between rounded-tr-[2.5rem] bg-cream p-6 text-navy md:p-7"
               >
-                <p className="font-display text-[2.5rem] font-bold text-[#0F2C3D]">1</p>
+                <p className="font-display text-3xl font-bold text-navy md:text-4xl">1</p>
                 <div>
-                  <h3 className="font-display text-[17px] font-bold text-[#0F2C3D]">
+                  <h3 className="font-display text-lg font-semibold text-navy md:text-xl">
                     Tell us what you need
                   </h3>
-                  <p className="mt-2 text-[13px] leading-[1.5] text-[#0F2C3D]/70">
+                  <p className="mt-2 text-sm text-navy/80 md:text-base">
                     Share your brand, goal, audience and timeline in a short form.
                   </p>
                 </div>
               </motion.div>
             </Reveal>
 
-            {/* Step 2 */}
             <Reveal delay={0.08}>
               <motion.div
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="flex aspect-[5/4] flex-col justify-between rounded-tr-[2.5rem] rounded-bl-[2.5rem] bg-[#67E8F9] p-6 text-[#0F2C3D] md:p-7"
+                className="flex aspect-[5/4] flex-col justify-between rounded-tl-[2.5rem] bg-sky p-6 text-navy md:p-7"
               >
-                <p className="font-display text-[2.5rem] font-bold text-[#0F2C3D]">2</p>
+                <p className="font-display text-3xl font-bold text-navy md:text-4xl">2</p>
                 <div>
-                  <h3 className="font-display text-[17px] font-bold text-[#0F2C3D]">
+                  <h3 className="font-display text-lg font-semibold text-navy md:text-xl">
                     Get a clear proposal
                   </h3>
-                  <p className="mt-2 text-[13px] leading-[1.5] text-[#0F2C3D]/80">
+                  <p className="mt-2 text-sm text-navy/80 md:text-base">
                     Scope, deliverables, timeline and quote, built around your brief.
                   </p>
                 </div>
               </motion.div>
             </Reveal>
 
-            {/* Step 3 */}
             <Reveal delay={0.16}>
               <motion.div
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="flex aspect-[5/4] flex-col justify-between rounded-br-[2.5rem] bg-[#C82333] p-6 text-white md:p-7"
+                className="flex aspect-[5/4] flex-col justify-between rounded-br-[2.5rem] bg-red p-6 text-cream md:p-7"
               >
-                <p className="font-display text-[2.5rem] font-bold text-white">3</p>
+                <p className="font-display text-3xl font-bold text-cream md:text-4xl">3</p>
                 <div>
-                  <h3 className="font-display text-[17px] font-bold text-white">
-                    The work begins
+                  <h3 className="font-display text-lg font-semibold text-cream md:text-xl">
+                    We get to work
                   </h3>
-                  <p className="mt-2 text-[13px] leading-[1.5] text-white/90">
+                  <p className="mt-2 text-sm text-cream/90 md:text-base">
                     One team runs the talent, content and media from start to finish.
                   </p>
                 </div>
@@ -420,18 +417,18 @@ export default function WhatWeDo() {
             </Reveal>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-8">
             <Link
               to="/brief"
-              className="inline-flex items-center rounded-full bg-[#C82333] px-8 py-3.5 text-[14px] font-bold text-white transition-colors hover:bg-[#a81b2a]"
+              className="inline-flex items-center rounded-full bg-red px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-red/90 md:text-base"
             >
-              Start step 1
+              Start your project
             </Link>
           </div>
         </div>
 
         {/* OUR WORK AT A GLANCE */}
-        <div id="our-work" className="mt-28">
+        <div id="our-work"className="mt-28">
           <div className="grid grid-cols-1 items-end gap-6 md:grid-cols-2 md:gap-12">
             <h2 className="font-display text-3xl font-semibold text-navy md:text-4xl lg:text-5xl">
               Our work, at a glance.
@@ -441,7 +438,7 @@ export default function WhatWeDo() {
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-3 md:grid-rows-2 md:gap-4">
+          <div  className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-3 md:grid-rows-2 md:gap-4">
             <Reveal className="md:col-span-1 md:row-span-2">
               <motion.div
                 whileHover={{ scale: 1.01 }}
@@ -498,15 +495,15 @@ export default function WhatWeDo() {
           </div>
         </div>
 
-        {/* FAQ (Matched to UI) */}
+        {/* FAQ */}
         <div className="mt-28">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-widest text-[#C82333]">
+              <p className="text-xs font-bold uppercase tracking-widest text-red md:text-sm">
                 Questions
               </p>
-              <h2 className="mt-3 font-display text-[2.5rem] font-bold leading-[1.1] text-[#0F2C3D] md:text-[3rem]">
-                Good to know<br />before you start.
+              <h2 className="mt-3 font-display text-3xl font-semibold text-navy md:text-4xl lg:text-5xl">
+                Good to know before you start.
               </h2>
             </div>
 
@@ -515,7 +512,7 @@ export default function WhatWeDo() {
                 { q: "Can I use just one service?", a: "Yes. Each service works on its own, and you can add others later as you grow." },
                 { q: "Do you work on a monthly basis?", a: "Yes. Social media, paid media and talent work can run as a monthly partnership with a set scope and regular planning." },
                 { q: "How is pricing decided?", a: "Every project is quoted to your brief, based on scope, deliverables, platform and the number of creators or shoot days." },
-                { q: "Do you work with brands outside Pakistan?", a: "Yes. The Right Talent works with brands in Pakistan and international markets, including New York and Canada." },
+                { q: "Do you work with brands outside Pakistan?", a: "Yes. We work with brands in Pakistan and international markets, including New York and Canada." },
                 { q: "Do you only work with influencers?", a: "No. We cast UGC creators, influencers, models, actors and presenters, and match each one to your niche and audience." },
               ].map((item, i) => (
                 <FaqItem key={item.q} q={item.q} a={item.a} index={i} />
@@ -524,32 +521,34 @@ export default function WhatWeDo() {
           </div>
         </div>
 
-        {/* SKY CTA */}
-        <Reveal delay={0.1}>
-          <section className="relative mt-28 overflow-hidden rounded-tl-[4rem] rounded-br-[4rem] bg-sky p-10 md:p-14">
-            <div className="relative grid grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_auto]">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-navy/70 md:text-sm">
-                  One project or monthly
-                </p>
-                <h2 className="mt-3 max-w-2xl font-display text-3xl font-semibold text-navy md:text-4xl lg:text-5xl">
-                  Use one service, or all four.
-                </h2>
-                <p className="mt-4 max-w-xl text-sm text-navy/80 md:text-base">
-                  Tell us about your brand and we'll come back with the right plan.
-                </p>
-              </div>
-              <div>
-                <Link
-                  to="/brief"
-                  className="inline-flex items-center rounded-full bg-red px-8 py-4 text-sm font-semibold text-cream transition-colors hover:bg-red/90 md:text-base"
-                >
-                  Start your project
-                </Link>
-              </div>
-            </div>
-          </section>
-        </Reveal>
+        {/* SKY CTA — Use one service, or all four */}
+<Reveal delay={0.1}>
+  <section className="relative mt-28 overflow-hidden rounded-tl-[4rem] rounded-br-[4rem] bg-sky p-10 md:p-14">
+    <div className="relative grid grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_auto]">
+      <div>
+        <p className="text-xs font-bold uppercase tracking-widest text-navy/70 md:text-sm">
+          One project or monthly
+        </p>
+        <h2 className="mt-3 max-w-2xl font-display text-3xl font-semibold text-navy md:text-4xl lg:text-5xl">
+          Use one service, or all four.
+        </h2>
+        <p className="mt-4 max-w-xl text-sm text-navy/80 md:text-base">
+          Tell us about your brand and we'll come back with the right plan.
+        </p>
+      </div>
+      <div>
+        <Link
+          to="/brief"
+          className="inline-flex items-center rounded-full bg-red px-8 py-4 text-sm font-semibold text-cream transition-colors hover:bg-red/90 md:text-base"
+        >
+          Start your project
+        </Link>
+      </div>
+    </div>
+  </section>
+</Reveal>
+
+        
 
       </div>
     </Sec>
