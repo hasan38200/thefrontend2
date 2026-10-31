@@ -70,11 +70,6 @@ export default function Nav() {
 
   return (
     <>
-      {/* 
-        FIXED NAVBAR:
-        - Removed the scroll-based animation hooks.
-        - Set the background to a solid navy with a subtle bottom border.
-      */}
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0F344E] text-white">
         
         {/* 3-column grid layout to center the nav perfectly */}
@@ -116,7 +111,8 @@ export default function Nav() {
                     className="absolute left-0 top-full z-50 mt-3 w-[820px] max-w-[95vw] rounded-3xl border border-white/10 bg-[#FFFFFF] p-8 shadow-2xl"
                   >
                     <div className="mb-6 flex items-baseline justify-between border-b border-navy/15 pb-4">
-                      <h3 className="font-display text-3xl font-semibold text-navy">Right location</h3>
+                      {/* CHANGED TO text-[13px] */}
+                      <h3 className="font-display !text-[20px] font-semibold text-navy">Right location</h3>
                       <Link to="/places" onClick={() => setPlacesOpen(false)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </Link>
@@ -171,7 +167,8 @@ export default function Nav() {
                     className="absolute left-0 top-full z-50 mt-3 w-[820px] max-w-[95vw] rounded-3xl border border-navy/10 bg-[#FFFFFF] p-8 shadow-2xl"
                   >
                     <div className="mb-6 flex items-baseline justify-between border-b border-navy/15 pb-4">
-                      <h3 className="font-display text-3xl font-semibold text-navy">Right industries</h3>
+                      {/* CHANGED TO text-[13px] */}
+                      <h3 className="font-display !text-[20px] font-semibold text-navy">Right industries</h3>
                       <Link to="/industries" onClick={() => setIndustriesOpen(false)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </Link>
@@ -217,7 +214,8 @@ export default function Nav() {
                     className="absolute left-1/2 -translate-x-1/2 top-full z-50 mt-3 w-[360px] rounded-3xl border border-navy/10 bg-[#FFFFFF] p-6 shadow-2xl"
                   >
                     <div className="mb-4 flex items-baseline justify-between border-b border-navy/15 pb-4">
-                      <h3 className="font-display text-3xl font-semibold text-navy">What We Do</h3>
+                      {/* CHANGED TO text-[13px] */}
+                      <h3 className="font-display !text-[20px] font-semibold text-navy">What We Do</h3>
                       <button onClick={() => goToWhatWeDo(null)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </button>
@@ -262,7 +260,8 @@ export default function Nav() {
                     className="absolute left-1/2 -translate-x-1/2 top-full z-50 mt-3 w-[360px] rounded-3xl border border-navy/10 bg-[#FFFFFF] p-6 shadow-2xl"
                   >
                     <div className="mb-4 flex items-baseline justify-between border-b border-navy/15 pb-4">
-                      <h3 className="font-display text-3xl font-semibold text-navy">Who We Are</h3>
+                      {/* CHANGED TO text-[13px] */}
+                      <h3 className="font-display !text-[20px] font-semibold text-navy">Who We Are</h3>
                     </div>
                     <div className="flex flex-col">
                       {WHO_WE_ARE.map((item) => (
@@ -318,7 +317,8 @@ export default function Nav() {
                     className="absolute right-0 top-full z-50 mt-3 w-[360px] rounded-3xl border border-navy/10 bg-[#FFFFFF] p-6 shadow-2xl"
                   >
                     <div className="mb-4 flex items-baseline justify-between border-b border-navy/15 pb-4">
-                      <h3 className="font-display text-3xl font-semibold text-navy">Latest</h3>
+                      {/* CHANGED TO text-[13px] */}
+                      <h3 className="font-display !text-[20px] font-semibold text-navy">Latest</h3>
                     </div>
                     <div className="flex flex-col">
                       {LATEST.map((item) => (
