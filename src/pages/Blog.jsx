@@ -14,7 +14,7 @@ const ARTICLES = [
     desc: "Why a Lahore-based creator might mostly reach viewers in Dubai, and how to check before you book.",
     image: "https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=800",
     shape: "rounded-tr-[3rem]",
-    bg: "bg-navy",
+    bg: "bg-[#0F2C3D]",
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const ARTICLES = [
     desc: "The hook, the talking points and the CTA: a simple brief structure that gets better videos.",
     image: "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=800",
     shape: "rounded-tl-[3rem]",
-    bg: "bg-red",
+    bg: "bg-[#C82333]",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const ARTICLES = [
     desc: "A simple calendar method for brands that want to post consistently without the panic.",
     image: "https://images.pexels.com/photos/5081933/pexels-photo-5081933.jpeg?auto=compress&cs=tinysrgb&w=800",
     shape: "rounded-bl-[3rem]",
-    bg: "bg-sky",
+    bg: "bg-[#67E8F9]",
   },
   {
     id: 4,
@@ -44,7 +44,7 @@ const ARTICLES = [
     desc: "How to turn your best creator posts into ads, and what to agree with creators first.",
     image: "https://images.pexels.com/photos/6476260/pexels-photo-6476260.jpeg?auto=compress&cs=tinysrgb&w=800",
     shape: "rounded-bl-[3rem]",
-    bg: "bg-navy",
+    bg: "bg-[#0F2C3D]",
   },
   {
     id: 5,
@@ -54,17 +54,17 @@ const ARTICLES = [
     desc: "Shot lists, mood boards, styling and approvals: the checklist that saves the day.",
     image: "https://images.pexels.com/photos/3014016/pexels-photo-3014016.jpeg?auto=compress&cs=tinysrgb&w=800",
     shape: "rounded-tr-[3rem]",
-    bg: "bg-red",
+    bg: "bg-[#C82333]",
   },
   {
     id: 6,
     category: "Agency news",
     time: "3 min read",
-    title: "Meet The Right Talent: why we started",
+    title: "Meet The Right Talent: the story behind the agency",
     desc: "The story behind a research-led talent agency, and what 'the right fit' means to us.",
     image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800",
     shape: "rounded-tl-[3rem]",
-    bg: "bg-sky",
+    bg: "bg-[#67E8F9]",
   },
 ];
 
@@ -73,7 +73,8 @@ function ArticleCard({ article }) {
   return (
     <Reveal>
       <div className="group flex h-full flex-col cursor-pointer">
-        {/* Image Container with unique shape */}
+        
+        {/* Image Container with specific shape and background */}
         <div className={`relative aspect-[4/3] w-full overflow-hidden ${article.shape} ${article.bg}`}>
           <img 
             src={article.image} 
@@ -83,23 +84,24 @@ function ArticleCard({ article }) {
         </div>
         
         {/* Meta tags */}
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          <span className="rounded-full bg-[#FBEFD6] px-4 py-1.5 text-xs font-semibold text-navy">
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <span className="text-[11px] font-bold uppercase tracking-widest text-[#0F2C3D]/50">
             {article.category}
           </span>
-          <span className="text-xs font-medium text-navy/60">{article.time}</span>
+          <span className="text-[11px] text-[#0F2C3D]/40">·</span>
+          <span className="text-[11px] font-medium text-[#0F2C3D]/50">{article.time}</span>
         </div>
 
         {/* Title & Desc */}
-        <h3 className="mt-4 font-display text-2xl font-semibold text-navy transition-colors group-hover:text-red">
+        <h3 className="mt-2 font-display text-[1.15rem] font-bold leading-[1.3] text-[#0F2C3D] transition-colors group-hover:text-[#C82333]">
           {article.title}
         </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-navy/75">
+        <p className="mt-2 flex-1 text-[13px] leading-[1.6] text-[#0F2C3D]/70">
           {article.desc}
         </p>
 
         {/* Read Article Link */}
-        <div className="mt-6 flex items-center gap-2 text-sm font-bold text-red">
+        <div className="mt-5 flex items-center gap-1.5 text-[13px] font-bold text-[#C82333]">
           <span>Read article</span>
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </div>
@@ -112,7 +114,6 @@ function ArticleCard({ article }) {
 export default function Blog() {
   const [activeCategory, setActiveCategory] = useState("All");
 
-  // Filter logic
   const filteredArticles = activeCategory === "All" 
     ? ARTICLES 
     : ARTICLES.filter(a => a.category === activeCategory);
@@ -120,69 +121,44 @@ export default function Blog() {
   const featuredArticle = ARTICLES[0];
 
   return (
-    <Sec className="bg-cream min-h-screen">
-      <div className="mx-auto max-w-6xl px-5 pt-[10%] pb-20 md:px-10">
+    <Sec className="bg-[#FFFFFF] min-h-screen">
+      <div className="mx-auto max-w-[1100px] px-5 pt-28 pb-20 md:px-10 md:pt-32">
 
-        {/* HERO */}
-        <div className="max-w-4xl">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease }}
-            className="text-xs font-bold uppercase tracking-widest text-red md:text-sm"
-          >
-            Latest · Blogs
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15, ease }}
-            className="mt-4 font-display text-4xl font-semibold leading-[1.05] text-navy md:text-5xl lg:text-6xl"
-          >
-            Ideas for finding the <span className="font-serif italic text-red">right</span> talent, and using it well.
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease }}
-            className="mt-6 max-w-2xl text-base leading-relaxed text-navy/75 md:text-lg"
-          >
-            Practical tips on talent, PR, social media, paid media and shoots, from the people who do it every day.
-          </motion.p>
-        </div>
-
-        {/* FEATURED ARTICLE */}
+        {/* FEATURED ARTICLE (Matched EXACTLY to UI) */}
         <Reveal delay={0.1}>
-          <div className="mt-20 grid grid-cols-1 items-center gap-10 overflow-hidden rounded-tr-[4rem] rounded-bl-[4rem] bg-navy p-8 md:grid-cols-2 md:p-12 lg:p-16">
-            {/* Image */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-tr-[3rem] bg-sky">
-              <img 
-                src={featuredArticle.image} 
-                alt="Featured" 
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" 
-              />
+          <div className="grid grid-cols-1 overflow-hidden rounded-tl-[3rem] rounded-tr-[3rem] rounded-bl-[3rem] rounded-br-[1.25rem] bg-[#0F2C3D] md:grid-cols-2 md:rounded-tl-[4rem] md:rounded-tr-[4rem] md:rounded-bl-[4rem] md:rounded-br-[1.5rem]">
+
+            {/* Left side: image inset inside the navy card */}
+            <div className="p-5 pb-0 md:py-9 md:pb-7 md:pl-8 md:pr-0">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-tr-[3rem] bg-[#67E8F9] md:aspect-auto md:h-full md:min-h-[300px] md:rounded-tr-[3.5rem]">
+                <img
+                  src={featuredArticle.image}
+                  alt="Featured"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
             </div>
-            
-            {/* Content */}
-            <div className="flex flex-col items-start text-cream">
-              <div className="flex items-center gap-3">
-                <span className="rounded-full bg-red px-4 py-1.5 text-xs font-bold text-white uppercase tracking-wider">
+
+            {/* Right side Content */}
+            <div className="flex flex-col justify-center p-6 sm:p-8 md:py-10 md:pl-10 md:pr-12">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="rounded-full bg-[#C82333] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
                   Featured
                 </span>
-                <span className="text-sm font-medium text-cream/70">
-                  {featuredArticle.category} · {featuredArticle.time}
+                <span className="text-[11px] font-medium text-white/60">
+                  Talent & PR · 6 min read
                 </span>
               </div>
-              
-              <h2 className="mt-6 font-display text-3xl font-semibold leading-[1.1] md:text-4xl lg:text-5xl">
-                {featuredArticle.title}
+
+              <h2 className="mt-5 font-display text-[2rem] font-bold leading-[1.1] text-white md:text-[2.5rem]">
+                Why follower count is the wrong way to pick an influencer
               </h2>
-              
-              <p className="mt-6 text-base leading-relaxed text-cream/80">
-                {featuredArticle.desc}
+
+              <p className="mt-4 text-[14px] leading-[1.6] text-white/70">
+                Big numbers don't guarantee the right buyers. Here's a better scorecard: niche, audience, geography, brand and campaign fit.
               </p>
-              
-              <button className="mt-8 rounded-full bg-cream px-8 py-3 text-sm font-semibold text-navy transition hover:bg-white">
+
+              <button className="mt-8 self-start rounded-full bg-white px-6 py-3 text-[13px] font-bold text-[#0F2C3D] transition hover:bg-white/90">
                 Read the article
               </button>
             </div>
@@ -190,11 +166,11 @@ export default function Blog() {
         </Reveal>
 
         {/* ALL ARTICLES */}
-        <div className="mt-32">
+        <div className="mt-24">
           {/* Header & Filters */}
-          <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <Reveal>
-              <h2 className="font-display text-4xl font-semibold text-navy md:text-5xl">
+              <h2 className="font-display text-[2.2rem] font-bold text-[#0F2C3D] md:text-[2.75rem]">
                 All articles
               </h2>
             </Reveal>
@@ -205,10 +181,10 @@ export default function Blog() {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`rounded-full border px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${
+                    className={`rounded-full border px-4 py-1.5 text-[11px] font-bold transition-all duration-300 ${
                       activeCategory === cat
-                        ? "border-navy bg-navy text-cream"
-                        : "border-navy/30 bg-transparent text-navy hover:border-navy"
+                        ? "border-[#0F2C3D] bg-[#0F2C3D] text-white"
+                        : "border-[#0F2C3D]/20 bg-transparent text-[#0F2C3D] hover:border-[#0F2C3D]"
                     }`}
                   >
                     {cat}
@@ -218,16 +194,16 @@ export default function Blog() {
             </Reveal>
           </div>
 
-          {/* Articles Grid */}
-          <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Articles Grid (3 columns) */}
+          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             <AnimatePresence mode="popLayout">
               {filteredArticles.map((article) => (
                 <motion.div
                   key={article.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4, ease }}
                 >
                   <ArticleCard article={article} />
@@ -236,40 +212,6 @@ export default function Blog() {
             </AnimatePresence>
           </div>
         </div>
-
-        {/* NEWSLETTER */}
-        <Reveal delay={0.1}>
-          <div className="relative mt-32 overflow-hidden rounded-tl-[4rem] rounded-br-[4rem] bg-sky px-8 py-16 md:px-16 md:py-20">
-            <div className="max-w-2xl">
-              <p className="text-xs font-bold uppercase tracking-widest text-navy/60 md:text-sm">
-                Newsletter
-              </p>
-              
-              <h2 className="mt-4 font-display text-3xl font-semibold text-navy md:text-4xl lg:text-5xl">
-                Get the <span className="font-serif italic text-white">right</span> ideas, monthly.
-              </h2>
-              
-              <p className="mt-4 text-base text-navy/80">
-                New posts, reports and talent insights in your inbox. No spam.
-              </p>
-              
-              <form className="mt-8 flex flex-col gap-3 sm:flex-row" onSubmit={(e) => e.preventDefault()}>
-                <input 
-                  type="email" 
-                  placeholder="Your email address" 
-                  required
-                  className="w-full rounded-full border border-navy/20 bg-cream px-6 py-3.5 text-sm text-navy outline-none focus:border-navy focus:ring-2 focus:ring-navy/20 sm:max-w-xs"
-                />
-                <button 
-                  type="submit" 
-                  className="rounded-full bg-red px-8 py-3.5 text-sm font-semibold text-cream transition hover:bg-red/90"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </Reveal>
 
       </div>
     </Sec>
