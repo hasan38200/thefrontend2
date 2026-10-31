@@ -4,22 +4,31 @@ import { Reveal, Sec, ease } from "../ui";
 import { CITY_INFLUENCERS } from "../data";
 import { FaInstagram, FaLinkedin, FaYoutube, FaTiktok } from "react-icons/fa";
 
-const PLATFORMS = [
-  { key: "instagram", Icon: FaInstagram, label: "Instagram", url: (u) => `https://instagram.com/${u}` },
-  { key: "tiktok", Icon: FaTiktok, label: "TikTok", url: (u) => `https://tiktok.com/@${u}` },
-  { key: "youtube", Icon: FaYoutube, label: "YouTube", url: (u) => `https://youtube.com/@${u}` },
-  { key: "linkedin", Icon: FaLinkedin, label: "LinkedIn", url: (u) => `https://linkedin.com/in/${u}` },
-];
+const PLATFORMS = {
+  instagram: { Icon: FaInstagram, label: "Instagram", base: "https://instagram.com/" },
+  tiktok: { Icon: FaTiktok, label: "TikTok", base: "https://tiktok.com/@" },
+  youtube: { Icon: FaYoutube, label: "YouTube", base: "https://youtube.com/@" },
+  linkedin: { Icon: FaLinkedin, label: "LinkedIn", base: "https://linkedin.com/in/" },
+};
 
-// Shows every platform. Uses influencer.socials[key] if provided, otherwise builds a link from the handle.
-const SocialIcons = ({ handle, socials }) => {
-  const user = (handle || "").trim().replace(/^@/, "");
-  if (!user && !socials) return null;
+// Shows ONLY the platforms the influencer actually has
+const SocialIcons = ({ handle, url, socials }) => {
+  const items = [];
 
-  const items = PLATFORMS.map((p) => ({
-    ...p,
-    href: socials?.[p.key] || (user ? p.url(user) : null),
-  })).filter((p) => p.href);
+  // 1. If a specific 'socials' object is passed, use that
+  if (socials) {
+    Object.entries(socials).forEach(([key, link]) => {
+      if (PLATFORMS[key] && link) {
+        items.push({ key, ...PLATFORMS[key], href: link });
+      }
+    });
+  } 
+  // 2. Otherwise, fallback to the primary 'url' (which we know is Instagram in your data)
+  else if (url) {
+    items.push({ key: "instagram", ...PLATFORMS["instagram"], href: url });
+  }
+
+  if (items.length === 0) return null;
 
   return (
     <div className="mt-3 flex items-center gap-4">
@@ -84,13 +93,13 @@ export default function InfluencerDetail() {
 
   return (
     <Sec className="bg-cream min-h-screen">
-      <div className="mx-auto max-w-6xl px-5 pt-[5%] pb-20 md:px-10 ">
+      <div className="mx-auto max-w-6xl px-5 pt-[5%] pb-20 md:px-10">
 
         <Reveal>
           <a
             href="#"
             onClick={handleBack}
-            className=" inline-flex pb-9 items-center gap-2 text-base font-semibold text-navy transition-colors hover:text-red cursor-pointer"
+            className="inline-flex pb-9 items-center gap-2 text-base font-semibold text-navy transition-colors hover:text-red cursor-pointer"
           >
             <span>←</span> Back
           </a>
@@ -114,8 +123,8 @@ export default function InfluencerDetail() {
                 {influencer.name}
               </h1>
 
-              {/* Social Icons instead of handle text */}
-              <SocialIcons handle={influencer.handle} socials={influencer.socials} />
+              {/* PASSED THE URL HERE SO IT KNOWS WHAT TO SHOW */}
+              <SocialIcons handle={influencer.handle} url={influencer.url} socials={influencer.socials} />
 
               <div className="mt-8">
                 <p className="text-base leading-relaxed text-navy/80 md:text-lg">
