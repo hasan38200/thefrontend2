@@ -6,12 +6,44 @@ const NEEDS = ["Talent & PR", "Social media", "Paid media", "Shoots", "Not sure 
 
 export default function BrandForm() {
   const [needs, setNeeds] = useState([]);
+  // Pre-fill with empty string instead of leaving them undefined
   const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", brief: "" });
+  const [status, setStatus] = useState("");
   
   const toggleNeed = (n) => {
-    setNeeds((prev) => 
-      prev.includes(n) ? prev.filter((x) => x !== n) : [...prev, n]
-    );
+    setNeeds((prev) => prev.includes(n) ? prev.filter((x) => x !== n) : [...prev, n]);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    // Build FormData manually from the React state
+    const formData = new FormData();
+    formData.append("fullName", `${form.name || "No Name"} from ${form.company || "No Company"}`);
+    formData.append("email", form.email || "No Email");
+    formData.append("phone", form.phone || "No Phone");
+    formData.append("role", "Brand Brief");
+    formData.append("portfolio", "N/A");
+    formData.append("why", `Needs: ${needs.length > 0 ? needs.join(", ") : "None selected"}\n\nBrief: ${form.brief || "No brief provided"}`);
+
+    try {
+      const response = await fetch("https://thebackend-teal.vercel.app/api/apply", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setNeeds([]);
+        setForm({ name: "", company: "", email: "", phone: "", brief: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
   };
 
   const p = { form, setForm };
@@ -59,7 +91,8 @@ export default function BrandForm() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="rounded-[2.5rem] border border-gray-100 bg-white p-6 sm:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
       >
-        <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+        {/* Removed encType as we are building data manually */}
+        <form onSubmit={handleSubmit} className="space-y-5">
           
           <div className="grid gap-5 sm:grid-cols-2">
             <Input label="Your name" name="name" {...p} />
@@ -105,9 +138,16 @@ export default function BrandForm() {
             {...p} 
           />
 
-          <button type="submit" className="mt-4 w-full rounded-full bg-red py-3.5 text-[15px] font-bold text-white transition hover:bg-[#a81b2a]">
-            Send brief
+          <button type="submit" disabled={status === "sending"} className="mt-4 w-full rounded-full bg-red py-3.5 text-[15px] font-bold text-white transition hover:bg-[#a81b2a] disabled:opacity-50">
+            {status === "sending" ? "Sending..." : "Send brief"}
           </button>
+          
+          {status === "success" && (
+            <p className="text-center text-[14px] font-bold text-green-600 mt-2">Brief sent successfully! We'll be in touch.</p>
+          )}
+          {status === "error" && (
+            <p className="text-center text-[14px] font-bold text-red-600 mt-2">Something went wrong. Please try again.</p>
+          )}
           
           <p className="text-center text-[12px] text-navy/50">
             Takes under a minute.
