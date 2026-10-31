@@ -201,7 +201,7 @@ export default function Nav() {
                   whatWeDoOpen ? "text-white/40" : "text-white hover:text-red"
                 }`}
               >
-                Expertise
+                What We Do
                 <motion.span animate={{ rotate: whatWeDoOpen ? 180 : 0 }} transition={{ duration: 0.25, ease: "easeInOut" }} className="text-[11px]">
                   ▾
                 </motion.span>
@@ -215,7 +215,7 @@ export default function Nav() {
                   >
                     <div className="mb-4 flex items-baseline justify-between border-b border-navy/15 pb-4">
                       {/* CHANGED TO text-[13px] */}
-                      <h3 className="font-display !text-[20px] font-semibold text-navy">What We Do</h3>
+                      <h3 className="font-display !text-[20px] font-semibold text-navy">Expertise</h3>
                       <button onClick={() => goToWhatWeDo(null)} className="text-xs font-semibold uppercase tracking-widest text-red hover:underline">
                         View All →
                       </button>
@@ -318,7 +318,7 @@ export default function Nav() {
                   >
                     <div className="mb-4 flex items-baseline justify-between border-b border-navy/15 pb-4">
                       {/* CHANGED TO text-[13px] */}
-                      <h3 className="font-display !text-[20px] font-semibold text-navy">Latest</h3>
+                      <h3 className="font-display !text-[17px] font-semibold text-navy">Latest</h3>
                     </div>
                     <div className="flex flex-col">
                       {LATEST.map((item) => (

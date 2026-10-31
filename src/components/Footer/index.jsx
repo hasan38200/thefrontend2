@@ -4,8 +4,7 @@ import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 
 const AGENCY = [
   ["About us", "/about-us"],
-  ["What we do", "/what-we-do"],
-  ["Portfolio", "/what-we-do#our-work"],
+  ["Expertise", "/what-we-do"],
   ["Careers", "/careers"],
   ["Blogs", "/blog"],
   ["Reports", "/reports"],
