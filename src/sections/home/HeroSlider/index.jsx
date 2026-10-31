@@ -5,14 +5,11 @@ import {useMotionValue,useAnimationFrame,useScroll,useVelocity} from "framer-mot
 
 const SHAPES=["aspect-[4/5]","aspect-square","aspect-[3/4]"];
 
-const VIDEOS = [
-  "/videos/video-1.mp4",
-  "/videos/video-2.mp4",
-  "/videos/video-3.mp4",
-  "/videos/video-4.mp4",
-  "/videos/video-5.mp4",
-  "/videos/video-6.mp4",
-  "/videos/video-7.mp4",
+// Each column gets its OWN videos, so no video is ever shared between columns
+const COLUMN_VIDEOS = [
+  ["/videos/video-1.mp4", "/videos/video-2.mp4", "/videos/video-3.mp4"], // column 1
+  ["/videos/video-4.mp4", "/videos/video-5.mp4"],                         // column 2
+  ["/videos/video-6.mp4", "/videos/video-7.mp4"],                         // column 3
 ];
 
 const playVideo = (e) => {
@@ -42,11 +39,13 @@ function Col({c,dir,speed}){
   y.set(n);
  });
 
- // CHANGED: Generated 14 items instead of 6 to perfectly loop 7 videos
- const items=[0,1,2,3,4,5,6,7,8,9,10,11,12,13].map(i=>[
-   CATS[(i+c*2)%5],
+ // 6 cards per column (divides evenly by 3 and by 2, so the loop has no seam).
+ // Each card picks from this column's own video group only.
+ const colVideos = COLUMN_VIDEOS[c];
+ const items=[0,1,2,3,4,5].map(i=>[
+   CATS[(i+c)%5],
    IMG.hero[(c*4+i)%IMG.hero.length],
-   VIDEOS[(i+c)%VIDEOS.length]
+   colVideos[i % colVideos.length]
  ]);
 
  return (
