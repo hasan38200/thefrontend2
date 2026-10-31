@@ -17,9 +17,9 @@ export default function Footer() {
   return (
     <footer className="border-t border-navy/10 bg-white px-4 py-8 text-navy sm:px-5 md:px-10 md:py-10">
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col gap-8 lg:flex-row lg:justify-between lg:gap-12">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
 
-          {/* Logo & tagline */}
+          {/* Logo & tagline: far left */}
           <div className="max-w-xs">
             <Link to="/" className="inline-block">
               <motion.img
@@ -34,8 +34,8 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Link columns: always on one line */}
-          <div className="grid grid-cols-3 gap-x-4 sm:gap-x-8 lg:gap-x-14">
+          {/* Link columns: far right, spread out, always on one line */}
+          <div className="grid grid-cols-3 ">
             {/* Agency */}
             <div className="min-w-0">
               <p className={headClass}>Agency</p>

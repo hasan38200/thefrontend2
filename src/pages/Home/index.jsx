@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import { goTo } from "../../ui";
 import {
   Hero, Marquee, Why, Method, Services, HowWeWork, 
-  Difference, Talent, Testimonials, WhoWeWork, JoinTalent, FinalCta,
+  Talent, Testimonials, WhoWeWork, JoinTalent, FinalCta,
   CreatorsOfEverySize,FAQ // <-- Add this import
 } from "../../sections/home";
 
@@ -24,7 +24,6 @@ export default function Home() {
       <CreatorsOfEverySize /> 
       <Services />
       <HowWeWork />
-      <Difference />
       <Talent />
       <Testimonials />
       <WhoWeWork />
