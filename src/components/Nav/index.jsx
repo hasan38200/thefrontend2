@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Btn, goTo } from "../../ui";
@@ -33,15 +33,6 @@ export default function Nav() {
   const [industriesOpen, setIndustriesOpen] = useState(false);
   const [placesOpen, setPlacesOpen] = useState(false);
   const [latestOpen, setLatestOpen] = useState(false);
-
-  const { scrollY, scrollYProgress } = useScroll();
-  const prog = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
-
-  // Navbar background: transparent at the top -> navy after 80px of scroll
-  const smoothY = useSpring(scrollY, { stiffness: 120, damping: 30 });
-  const headerBg = useTransform(smoothY, [0, 80], ["rgba(15,44,61,0)", "rgba(15,44,61,0.92)"]);
-  const headerBorder = useTransform(smoothY, [0, 80], ["rgba(255,255,255,0)", "rgba(255,255,255,0.1)"]);
-  const headerBlur = useTransform(smoothY, [0, 80], ["blur(0px)", "blur(12px)"]);
 
   const go = (id) => {
     setOpen(false);
@@ -79,20 +70,13 @@ export default function Nav() {
 
   return (
     <>
-      <motion.header
-        style={{
-          backgroundColor: headerBg,
-          borderBottomColor: headerBorder,
-          backdropFilter: headerBlur,
-          WebkitBackdropFilter: headerBlur,
-        }}
-        className="fixed inset-x-0 top-0 z-50 border-b text-white"
-      >
-        <motion.div
-          className="absolute inset-x-0 bottom-0 h-[3px] origin-left bg-[#92EEFF]"
-          style={{ scaleX: prog }}
-        />
-
+      {/* 
+        FIXED NAVBAR:
+        - Removed the scroll-based animation hooks.
+        - Set the background to a solid navy with a subtle bottom border.
+      */}
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0F2C3D] text-white">
+        
         {/* 3-column grid layout to center the nav perfectly */}
         <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center px-4 py-3 md:px-10">
 
@@ -378,7 +362,7 @@ export default function Nav() {
             <span className={`absolute h-0.5 w-6 rounded-full bg-white transition-all duration-300 ${open ? "-rotate-45" : "translate-y-2"}`} />
           </button>
         </div>
-      </motion.header>
+      </header>
 
       <MobileMenu open={open} setOpen={setOpen} go={go} />
     </>

@@ -28,11 +28,7 @@ export default function Services() {
       <H2 className="mx-auto text-center text-red">Start with research. Scale to a full campaign.</H2>
       <ServicesDiagram />
 
-      <AnimatedLine />
-
-      <PackageCards />
-
-      <MonthlyPlans />
+    
     </Sec>
   );
 }

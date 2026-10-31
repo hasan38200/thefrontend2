@@ -13,7 +13,7 @@ export default function Words({ text, className = "", go, delay = 0, red = false
         <span
           key={i}
           aria-hidden
-          className="mr-[.26em] inline-block overflow-hidden pb-[0.3em] -mb-[0.25em] align-bottom"
+          className="mr-[.14em] inline-block overflow-hidden pb-[0.3em] pr-[.12em] -mb-[0.25em] align-bottom"
         >
           <motion.span
             className="inline-block"

@@ -1,5 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { Link } from "react-router";
 import { ease } from "../../../ui";
+import { btnMotion } from "../../../btnMotion";
 
 const TIERS = [
   {
@@ -80,7 +82,7 @@ export default function CreatorsOfEverySize() {
             <motion.p 
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, margin: "-100px" }} // <-- Changed to false
+              viewport={{ once: false, margin: "-100px" }}
               variants={fadeUpVariant}
               custom={0}
               className="text-[11px] font-bold uppercase tracking-widest text-[#C82333]"
@@ -91,7 +93,7 @@ export default function CreatorsOfEverySize() {
             <motion.h2 
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, margin: "-100px" }} // <-- Changed to false
+              viewport={{ once: false, margin: "-100px" }}
               variants={fadeUpVariant}
               custom={1}
               className="mt-3 text-[#0F2C3D] font-display text-[2.5rem] sm:text-[3.2rem] leading-[1.05] tracking-tight"
@@ -103,7 +105,7 @@ export default function CreatorsOfEverySize() {
           <motion.p 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, margin: "-100px" }} // <-- Changed to false
+            viewport={{ once: false, margin: "-100px" }}
             variants={fadeUpVariant}
             custom={2}
             className="text-[14px] leading-[1.6] text-[#0F2C3D]/70 sm:text-[15px] md:max-w-[380px] md:ml-auto md:pb-2"
@@ -117,7 +119,7 @@ export default function CreatorsOfEverySize() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, margin: "-50px" }} // <-- Changed to false
+          viewport={{ once: false, margin: "-50px" }}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 relative z-10"
         >
           {TIERS.map((tier, i) => (
@@ -151,21 +153,39 @@ export default function CreatorsOfEverySize() {
           ))}
         </motion.div>
 
-        {/* BOTTOM SECTION: Links */}
+        {/* BOTTOM SECTION: Links & Button */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false }} // <-- Changed to false
+          viewport={{ once: false }}
           variants={fadeUpVariant}
           custom={4}
-          className="mt-8"
+          className="mt-8 flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between"
         >
-          <p className="text-[13px] text-[#0F2C3D]/80">
-            Want many trusted voices posting at once? <a href="#research" className="font-bold text-[#0F2C3D] underline decoration-[#0F2C3D]/30 underline-offset-4 transition-colors hover:text-[#C82333] hover:decoration-[#C82333]">Plan a research-led nano & micro campaign →</a>
-          </p>
-          <p className="mt-2 text-[13px] text-[#0F2C3D]/60">
-            Not sure which size fits? <a href="#research" className="font-bold text-[#0F2C3D] underline decoration-[#0F2C3D]/30 underline-offset-4 transition-colors hover:text-[#C82333] hover:decoration-[#C82333]">Let our research decide →</a>
-          </p>
+          <div>
+            <p className="text-[13px] text-[#0F2C3D]/80">
+              Want many trusted voices posting at once? <a href="#research" className="font-bold text-[#0F2C3D] underline decoration-[#0F2C3D]/30 underline-offset-4 transition-colors hover:text-[#C82333] hover:decoration-[#C82333]">Plan a research-led nano & micro campaign →</a>
+            </p>
+            <p className="mt-2 text-[13px] text-[#0F2C3D]/60">
+              Not sure which size fits? <a href="#research" className="font-bold text-[#0F2C3D] underline decoration-[#0F2C3D]/30 underline-offset-4 transition-colors hover:text-[#C82333] hover:decoration-[#C82333]">Let our research decide →</a>
+            </p>
+          </div>
+
+          {/* CTA Button Aligned Right */}
+          <motion.div {...btnMotion} className="inline-block shrink-0">
+            <Link
+              to="/brief"
+              className="group/btn relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full border border-[#0F2C3D] bg-transparent px-6 py-3 text-sm font-semibold text-[#0F2C3D] transition-colors duration-300 hover:bg-[#0F2C3D] hover:text-white"
+            >
+              {/* Shimmer sweep */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -translate-x-full -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover/btn:translate-x-[450%]"
+              />
+              <span className="relative">Discuss a monthly partnership</span>
+              <span className="relative transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
+            </Link>
+          </motion.div>
         </motion.div>
 
       </div>

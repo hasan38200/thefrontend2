@@ -14,11 +14,15 @@ export default function JoinTalent() {
       >
         <div className="lg:max-w-3xl">
           <Eyebrow dark className="uppercase tracking-[0.18em] !text-[#92EEFF]">For creators</Eyebrow>
-          <h2 className="font-display !font-extrabold !tracking-tight text-white">
+          
+          {/* FIXED: Added !pt-2 !pb-2 to the h2 to prevent line clipping */}
+          <h2 className="font-display !font-extrabold !tracking-tight text-white !pt-2 !pb-2">
             <Words text="Are you the" className="!inline-block" />
+            {/* FIXED: Added !pb-2 !pr-1 to the italic word */}
             <Words text="right" className="!inline-block font-serif italic !font-normal text-[#92EEFF]" delay={0.2} />
             <Words text="talent?" className="!inline-block" delay={0.3} />
           </h2>
+          
           <Reveal>
             <p className="mt-3 max-w-2xl text-base leading-relaxed text-white sm:mt-4 sm:text-lg">
               UGC creators, influencers, models, actors and presenters: apply to join our roster. We vet every application and match you only with brands that genuinely fit your niche and audience.
@@ -28,19 +32,16 @@ export default function JoinTalent() {
 
         <Reveal delay={0.2} className="shrink-0">
           <Mag>
-            {/* Same spring tilt as the other buttons */}
             <motion.div {...btnMotion} className="inline-block">
               <a
                 href="mailto:[YOUR EMAIL]"
-                className="group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-red px-7 py-4 text-base font-semibold text-cream transition-colors duration-300 hover:bg-cream hover:text-navy sm:px-9 sm:py-5 sm:text-lg"
+                className="group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#C82333] px-7 py-4 text-base font-semibold text-cream transition-colors duration-300 hover:bg-cream hover:text-navy sm:px-9 sm:py-5 sm:text-lg"
               >
-                {/* Shimmer sweep */}
                 <span
                   aria-hidden
                   className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -translate-x-full -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover/btn:translate-x-[450%]"
                 />
                 <span className="relative">Apply to join</span>
-                {/* Arrow slides in */}
                 <span className="relative inline-block -translate-x-2 opacity-0 transition-all duration-300 group-hover/btn:translate-x-0 group-hover/btn:opacity-100">
                   →
                 </span>

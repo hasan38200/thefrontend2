@@ -1,10 +1,10 @@
 export const inp =
-  "mt-2 w-full rounded-2xl border border-navy/30 bg-cream px-4 py-3 outline-none transition focus:border-red focus:ring-2 focus:ring-red/30";
+  "mt-2 w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-red focus:ring-1 focus:ring-red";
 
 export function Field({ label, error, className = "", children }) {
   return (
     <label className={`block ${className}`}>
-      <span className="text-sm font-semibold">{label}</span>
+      <span className="text-[13px] font-semibold text-navy">{label}</span>
       {children}
       {error && <span className="mt-1 block text-sm text-red">{error}</span>}
     </label>
