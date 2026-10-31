@@ -75,7 +75,7 @@ export default function Nav() {
         - Removed the scroll-based animation hooks.
         - Set the background to a solid navy with a subtle bottom border.
       */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0F2C3D] text-white">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0F344E] text-white">
         
         {/* 3-column grid layout to center the nav perfectly */}
         <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center px-4 py-3 md:px-10">
