@@ -81,8 +81,8 @@ export default function Hero({ready=true}) {
             })}
           </h1>
 
-          <motion.p {...fade(2.4)} className="mt-4 max-w-xl text-sm leading-relaxed text-white sm:mt-5 sm:text-base md:text-lg">
-            Every recommendation starts with research into your product, customers and your market,so the creators,influencers,models and actors you get actually fit,from Karachi and Lahore to New York and Canada.
+          <motion.p {...fade(2.4)} className="mt-4 max-w-xl text-sm leading-relaxed text-white sm:mt-5 sm:text-base">
+            Every recommendation starts with research into your product, customers and your market, so the creators, influencers, models and actors you get actually fit, from Karachi and Lahore to New York and Canada.
           </motion.p>
 
           <motion.div {...fade(2.6)} className="mt-5 flex flex-wrap gap-2.5 sm:mt-6 sm:gap-3">
