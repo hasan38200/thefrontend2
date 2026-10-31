@@ -8,6 +8,11 @@ const SHAPES=["aspect-[4/5]","aspect-square","aspect-[3/4]"];
 const VIDEOS = [
   "/videos/video-1.mp4",
   "/videos/video-2.mp4",
+  "/videos/video-3.mp4",
+  "/videos/video-4.mp4",
+  "/videos/video-5.mp4",
+  "/videos/video-6.mp4",
+  "/videos/video-7.mp4",
 ];
 
 const playVideo = (e) => {
@@ -19,7 +24,7 @@ const stopVideo = (e) => {
   const v = e.currentTarget.querySelector("video");
   if (v) { 
     v.pause(); 
-    v.currentTime = 0.1; // Stay on a visible frame instead of black
+    v.currentTime = 0.1; 
   }
 };
 
@@ -37,7 +42,8 @@ function Col({c,dir,speed}){
   y.set(n);
  });
 
- const items=[0,1,2,3,4,5].map(i=>[
+ // CHANGED: Generated 14 items instead of 6 to perfectly loop 7 videos
+ const items=[0,1,2,3,4,5,6,7,8,9,10,11,12,13].map(i=>[
    CATS[(i+c*2)%5],
    IMG.hero[(c*4+i)%IMG.hero.length],
    VIDEOS[(i+c)%VIDEOS.length]
@@ -55,11 +61,6 @@ function Col({c,dir,speed}){
        onMouseLeave={stopVideo}
        className={`relative mb-2 overflow-hidden rounded-2xl bg-navy sm:mb-3 sm:rounded-3xl ${SHAPES[(i+c*2)%3]} group`}
      >
-      {/* 
-        ADDED poster={id} 
-        ADDED #t=0.1 to the src 
-        CHANGED preload to "metadata" 
-      */}
       <video
         src={`${vid}#t=0.1`}
         poster={id}
