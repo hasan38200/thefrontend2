@@ -80,7 +80,7 @@ export default function BrandForm() {
         </div>
 
         <div className="mt-12 border-t border-navy/15 pt-6 text-[13px] text-navy/60">
-          Prefer email? <a href="mailto:hello@therighttalent.com" className="underline hover:text-red">[YOUR EMAIL]</a>
+          Prefer email? <a href="mailto:teamrightalent@gmail.com" className="underline hover:text-red">teamrightalent@gmail.com</a>
         </div>
       </div>
 
