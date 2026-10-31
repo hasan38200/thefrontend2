@@ -5,8 +5,6 @@ import {useMotionValue,useAnimationFrame,useScroll,useVelocity} from "framer-mot
 
 const SHAPES=["aspect-[4/5]","aspect-square","aspect-[3/4]"];
 
-// "#t=0.1" makes the browser show a frame at 0.1s straight away,
-// so the card is never blank before you hover it
 const VIDEOS = [
   "/videos/video-1.mp4",
   "/videos/video-2.mp4",
@@ -19,7 +17,10 @@ const playVideo = (e) => {
 
 const stopVideo = (e) => {
   const v = e.currentTarget.querySelector("video");
-  if (v) { v.pause(); v.currentTime = 0.1; }  // back to the visible frame, not a blank 0
+  if (v) { 
+    v.pause(); 
+    v.currentTime = 0.1; // Stay on a visible frame instead of black
+  }
 };
 
 function Col({c,dir,speed}){
@@ -54,12 +55,18 @@ function Col({c,dir,speed}){
        onMouseLeave={stopVideo}
        className={`relative mb-2 overflow-hidden rounded-2xl bg-navy sm:mb-3 sm:rounded-3xl ${SHAPES[(i+c*2)%3]} group`}
      >
+      {/* 
+        ADDED poster={id} 
+        ADDED #t=0.1 to the src 
+        CHANGED preload to "metadata" 
+      */}
       <video
-        src={vid}
+        src={`${vid}#t=0.1`}
+        poster={id}
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         className="absolute inset-0 h-full w-full object-cover"
       />
 
