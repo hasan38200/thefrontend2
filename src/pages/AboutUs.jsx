@@ -23,7 +23,7 @@ export default function AboutUs() {
             transition={{ duration: 0.8, ease }}
             className="text-xs font-bold uppercase tracking-widest text-red md:text-sm"
           >
-            Who we are · About us
+             About The Right Talent
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -31,7 +31,7 @@ export default function AboutUs() {
             transition={{ duration: 0.8, delay: 0.15, ease }}
             className="mt-4 font-display text-4xl font-semibold leading-[1.05] text-navy md:text-6xl lg:text-7xl"
           >
-            We look for the <span className="font-serif italic text-red">right</span> fit, not the biggest name.
+            Looking for the <span className="font-serif italic text-red">right</span> fit, not the biggest name.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
