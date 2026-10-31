@@ -71,7 +71,7 @@ export default function Footer() {
             {/* Follow */}
             <div className="min-w-0">
               <p className={headClass}>Follow</p>
-              <div className="mt-1 flex items-center gap-4">
+              <div className="mt-1 flex flex-col gap-2">
                 <motion.a 
                   href="https://www.instagram.com/therightalent/" 
                   target="_blank" 
