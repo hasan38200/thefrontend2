@@ -28,7 +28,7 @@ export default function BrandForm() {
     formData.append("why", `Needs: ${needs.length > 0 ? needs.join(", ") : "None selected"}\n\nBrief: ${form.brief || "No brief provided"}`);
 
     try {
-      const response = await fetch("https://olivedrab-ibis-851738.hostingersite.com/api/apply", {
+      const response = await fetch("https://peachpuff-newt-354936.hostingersite.com/api/apply", {
         method: "POST",
         body: formData,
       });

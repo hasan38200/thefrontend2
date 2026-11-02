@@ -35,7 +35,7 @@ export default function CreatorForm() {
     formData.append("cvFile", "N/A"); 
 
     try {
-      const response = await fetch("https://olivedrab-ibis-851738.hostingersite.com/api/apply", {
+      const response = await fetch("https://peachpuff-newt-354936.hostingersite.com/api/apply", {
         method: "POST",
         body: formData,
       });
