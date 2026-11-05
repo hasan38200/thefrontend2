@@ -47,20 +47,14 @@ export default function AboutUs() {
         <Reveal delay={0.1}>
           <div className="mt-12 group relative aspect-[16/9] w-full overflow-hidden rounded-tl-[4rem] rounded-br-[6rem] bg-[#0F2C3D] cursor-pointer">
             <video
-              src="https://videos.pexels.com/video-files/3189039/3189039-hd_1920_1080_25fps.mp4"
-              poster="https://images.pexels.com/photos/3379943/pexels-photo-3379943.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              src="https://www.pexels.com/download/video/8631874/"
               autoPlay
               loop
               muted
               playsInline
               className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-80"
             />
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[#0F2C3D]/40 transition-colors duration-500 group-hover:bg-[#0F2C3D]/60">
-              <PlayIcon />
-              <p className="text-[13px] font-semibold tracking-wider text-white transition-transform duration-500 group-hover:-translate-y-1">
-                [Video: the team at work, 8-12 sec loop]
-              </p>
-            </div>
+        
           </div>
         </Reveal>
 
@@ -269,7 +263,7 @@ export default function AboutUs() {
             {[
               { city: "Karachi", country: "Pakistan", shape: "rounded-tr-[3rem]", img: "https://images.pexels.com/photos/14372997/pexels-photo-14372997.jpeg?auto=compress&cs=tinysrgb&w=800" },
               { city: "Lahore", country: "Pakistan", shape: "rounded-tl-[3rem]", img: "https://images.pexels.com/photos/14299137/pexels-photo-14299137.jpeg?auto=compress&cs=tinysrgb&w=800" },
-              { city: "New York", country: "United States", shape: "rounded-bl-[3rem]", img: "https://images.pexels.com/photos/2224861/pexels-photo-2224861.jpeg?auto=compress&cs=tinysrgb&w=800" },
+              { city: "New York", country: "United States", shape: "rounded-bl-[3rem]", img: "https://images.pexels.com/photos/27807670/pexels-photo-27807670.jpeg" },
               { city: "Canada", country: "North America", shape: "rounded-br-[3rem]", img: "https://images.pexels.com/photos/1519088/pexels-photo-1519088.jpeg?auto=compress&cs=tinysrgb&w=800" },
             ].map((loc, i) => (
               <Reveal key={loc.city} delay={i * 0.08}>

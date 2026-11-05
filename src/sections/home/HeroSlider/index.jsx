@@ -7,11 +7,20 @@ const SHAPES=["aspect-[4/5]","aspect-square","aspect-[3/4]"];
 
 // Each column gets its OWN videos, so no video is ever shared between columns
 const COLUMN_VIDEOS = [
-  ["/videos/video-1.mp4", "/videos/video-2.mp4", "/videos/video-3.mp4"], // column 1
-  ["/videos/video-4.mp4", "/videos/video-5.mp4"],                         // column 2
-  ["/videos/video-6.mp4", "/videos/video-7.mp4"],                         // column 3
+  [
+    "https://res.cloudinary.com/sklm7dvf/video/upload/v1793856996/video-1.mp4", 
+    "https://res.cloudinary.com/sklm7dvf/video/upload/v1793857034/video-2.mp4", 
+    "https://res.cloudinary.com/sklm7dvf/video/upload/v1793856984/video-3.mp4"
+  ], // column 1
+  [
+    "https://res.cloudinary.com/sklm7dvf/video/upload/v1793856997/video-4.mp4", 
+    "https://res.cloudinary.com/sklm7dvf/video/upload/v1793856993/video-5.mp4"
+  ], // column 2
+  [
+    "https://res.cloudinary.com/sklm7dvf/video/upload/v1793856991/video-6.mp4", 
+    "https://res.cloudinary.com/sklm7dvf/video/upload/v1793857034/video-7.mp4"
+  ], // column 3 (Note: I used the video-2 timestamp for video-7 as a placeholder, update if needed)
 ];
-
 const playVideo = (e) => {
   const v = e.currentTarget.querySelector("video");
   if (v) v.play().catch((err) => console.log("Video play failed:", v.src, err));
