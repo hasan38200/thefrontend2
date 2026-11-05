@@ -127,7 +127,7 @@ export default function AboutUs() {
               <p className="font-serif text-base italic leading-snug text-white md:text-lg">
                 "If we can't verify the audience, we don't recommend the creator. It's that simple."
               </p>
-              <p className="mt-4 text-[11px] font-bold text-white/60">Hamna Siddiqi, Founder</p>
+              <p className="mt-4 text-[11px] font-bold text-white/60">Hamna Siddiqui, Founder</p>
             </motion.div>
           </div>
         </div>
