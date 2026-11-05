@@ -127,7 +127,7 @@ export default function AboutUs() {
               <p className="font-serif text-base italic leading-snug text-white md:text-lg">
                 "If we can't verify the audience, we don't recommend the creator. It's that simple."
               </p>
-              <p className="mt-4 text-[11px] font-bold text-white/60">Zainab Riaz, Founder</p>
+              <p className="mt-4 text-[11px] font-bold text-white/60">Hamna Siddiqi, Founder</p>
             </motion.div>
           </div>
         </div>
@@ -303,7 +303,7 @@ export default function AboutUs() {
 
           <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
             {[
-              { name: "Zainab Riaz", role: "Founder", img: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800" },
+              { name: "Hamna Siddiqui", role: "Founder", img: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800" },
               { name: "Ali Hassan", role: "Talent & PR Lead", img: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800" },
               { name: "Sana Malik", role: "Social & Paid Media Lead", img: "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=800" },
               { name: "Usman Iqbal", role: "Production Lead", img: "https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=800" },
